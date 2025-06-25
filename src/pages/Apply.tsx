@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -60,7 +59,7 @@ const Apply = () => {
     skills: "",
     coopExperience: "",
     whyCoopMember: "",
-    photoLink: "",
+    photo: null as File | null,
     pets: "",
     // Section 7
     applicantJobTitle: "",
@@ -84,7 +83,7 @@ const Apply = () => {
   });
   const { toast } = useToast();
 
-  const handleInputChange = (field: string, value: string | boolean) => {
+  const handleInputChange = (field: string, value: string | boolean | File | null) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -606,13 +605,19 @@ const Apply = () => {
               <h4 className="font-semibold mb-4">Optional Questions</h4>
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="photoLink">If you have a link to a photo of yourself and the members of your household, please include it here.</Label>
+                  <Label htmlFor="photo">Upload a photo of yourself and the members of your household</Label>
                   <Input
-                    id="photoLink"
-                    type="url"
-                    value={formData.photoLink}
-                    onChange={(e) => handleInputChange("photoLink", e.target.value)}
+                    id="photo"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleInputChange("photo", e.target.files?.[0] || null)}
+                    className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
                   />
+                  {formData.photo && (
+                    <p className="text-sm text-gray-600 mt-2">
+                      Selected: {formData.photo.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="pets">If you have any pets, please describe them here.</Label>
