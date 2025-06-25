@@ -92,6 +92,8 @@ const Apply = () => {
     // Skip section 3 (rejection) for demo purposes
     if (currentSection === 2 && formData.childrenCount && (formData.childrenCount === "0" || formData.childrenCount === "More than 4")) {
       setCurrentSection(3);
+    } else if (currentSection === 2 && formData.childrenCount && (formData.childrenCount === "1" || formData.childrenCount === "2" || formData.childrenCount === "3" || formData.childrenCount === "4")) {
+      setCurrentSection(4); // Skip the rejection section and go directly to children details
     } else if (currentSection === 3) {
       setCurrentSection(4);
     } else {
