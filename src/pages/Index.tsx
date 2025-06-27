@@ -158,7 +158,7 @@ const Index = () => {
             <div className="text-left max-w-3xl mx-auto space-y-3 text-sm text-gray-700">
               <p><strong>Application Review:</strong> We keep applications on file for one year and automatically review them when new units become available.</p>
               <p><strong>Reapplication:</strong> If you already have an application on file and subscribe to our mailing list, you can submit a new application when spaces open if you prefer.</p>
-              <p><strong>Waiting List:</strong> After one year, applications are removed, but you can rejoin our mailing list to be notified of future openings.</p>
+              <p><strong>Mailing List:</strong> After one year, applications are removed, but you can rejoin our mailing list to be notified of future openings.</p>
             </div>
           </div>
         </div>
