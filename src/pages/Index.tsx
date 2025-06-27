@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, FileText, Lock } from "lucide-react";
@@ -152,10 +151,16 @@ const Index = () => {
               <p className="text-sm text-gray-600">Welcome home! Join our thriving cooperative community</p>
             </div>
           </div>
-          <p className="text-gray-600 mt-8 max-w-2xl mx-auto">
-            Applications are kept on file for one year and automatically considered for future openings. 
-            We typically receive around 500 applications, so early submission is encouraged!
-          </p>
+          
+          <div className="mt-12 bg-green-50 rounded-lg p-6">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Application Process Details</h4>
+            <div className="text-left max-w-3xl mx-auto space-y-3 text-sm text-gray-700">
+              <p><strong>Application Review:</strong> We keep applications on file for one year and automatically review them when new units become available.</p>
+              <p><strong>Reapplication:</strong> If you already have an application on file and subscribe to our mailing list, you can submit a new application when spaces open if you prefer.</p>
+              <p><strong>High Demand:</strong> We typically receive around 500 applications, so early submission when units are announced is encouraged.</p>
+              <p><strong>Waiting List:</strong> After one year, applications are removed, but you can rejoin our mailing list to be notified of future openings.</p>
+            </div>
+          </div>
         </div>
       </section>
 
