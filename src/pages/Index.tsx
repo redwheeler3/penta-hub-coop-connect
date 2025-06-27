@@ -53,7 +53,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/apply">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 bg-transparent">
                 Apply Now
               </Button>
             </Link>
