@@ -87,7 +87,66 @@ const Apply = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const validateCurrentSection = () => {
+    switch (currentSection) {
+      case 1:
+        return formData.email.trim() !== "";
+      case 2:
+        return (
+          formData.applicantFirstName.trim() !== "" &&
+          formData.applicantLastName.trim() !== "" &&
+          formData.applicantAge.trim() !== "" &&
+          formData.applicantPhone.trim() !== "" &&
+          formData.applicantEmail.trim() !== "" &&
+          formData.childrenCount !== ""
+        );
+      case 5:
+        return (
+          formData.streetAddress.trim() !== "" &&
+          formData.city.trim() !== "" &&
+          formData.country.trim() !== "" &&
+          formData.livedTwoYears !== "" &&
+          formData.ownRealEstate !== "" &&
+          formData.landlordName.trim() !== "" &&
+          formData.landlordEmail.trim() !== "" &&
+          formData.landlordPhone.trim() !== ""
+        );
+      case 6:
+        return (
+          formData.introduction.trim() !== "" &&
+          formData.skills.trim() !== "" &&
+          formData.coopExperience.trim() !== "" &&
+          formData.whyCoopMember.trim() !== ""
+        );
+      case 7:
+        return (
+          formData.applicantJobTitle.trim() !== "" &&
+          formData.applicantCompany.trim() !== "" &&
+          formData.applicantStartDate.trim() !== "" &&
+          formData.applicantManagerName.trim() !== "" &&
+          formData.applicantManagerPhone.trim() !== "" &&
+          formData.applicantManagerEmail.trim() !== ""
+        );
+      case 8:
+        return (
+          formData.applicantIncome.trim() !== "" &&
+          formData.householdIncome.trim() !== ""
+        );
+      default:
+        return true;
+    }
+  };
+
   const handleNext = () => {
+    if (!validateCurrentSection()) {
+      toast({
+        title: "Required fields missing",
+        description: "Please fill in all required fields before continuing.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Skip section 3 (rejection) for demo purposes
     if (currentSection === 2 && formData.childrenCount && (formData.childrenCount === "0" || formData.childrenCount === "More than 4")) {
       setCurrentSection(3);

@@ -36,13 +36,13 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+      {/* Hero Section with Background Image */}
+      <section className="relative py-20 px-4 bg-cover bg-center" style={{backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/lovable-uploads/b8ba0b0a-3797-4fb8-838c-6f51d58d9b0f.png')"}}>
+        <div className="max-w-7xl mx-auto text-center text-white">
+          <h2 className="text-5xl font-bold mb-6">
             Welcome to Penta Housing Co-Op
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
             A vibrant community where neighbors become family. Experience cooperative living 
             that combines affordability, sustainability, and genuine connection.
           </p>
@@ -53,7 +53,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/apply">
-              <Button size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
                 Apply Now
               </Button>
             </Link>
@@ -61,8 +61,33 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Community Images Section */}
       <section className="py-16 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            Our Beautiful Community
+          </h3>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/47cdec9e-cebc-416c-a2f5-c2db0cb41e6e.png" 
+                alt="Penta Co-op playground and community area" 
+                className="w-full h-64 object-cover"
+              />
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/d46b9bf1-78ae-41d1-8b55-5e87a24df421.png" 
+                alt="Natural wood buildings among mature trees" 
+                className="w-full h-64 object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
             Why Choose Penta Housing Co-Op?
@@ -73,7 +98,7 @@ const Index = () => {
                 <Users className="h-12 w-12 text-green-600 mb-4" />
                 <CardTitle>Community Living</CardTitle>
                 <CardDescription>
-                  Build lasting friendships and share experiences with like-minded neighbors
+                  Build lasting friendships and share experiences with like-minded neighbors in our family-friendly environment
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -83,7 +108,7 @@ const Index = () => {
                 <Home className="h-12 w-12 text-green-600 mb-4" />
                 <CardTitle>Affordable Housing</CardTitle>
                 <CardDescription>
-                  Enjoy quality housing at below-market rates through cooperative ownership
+                  Enjoy quality housing at below-market rates through cooperative ownership near beautiful Jericho Beach
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -93,11 +118,44 @@ const Index = () => {
                 <FileText className="h-12 w-12 text-green-600 mb-4" />
                 <CardTitle>Shared Resources</CardTitle>
                 <CardDescription>
-                  Access shared spaces, tools, and resources that enhance your living experience
+                  Access shared spaces, tools, playground, and green areas that enhance your living experience
                 </CardDescription>
               </CardHeader>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Application Process Overview */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8">How to Join Our Community</h3>
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">1</div>
+              <h4 className="font-semibold">Subscribe</h4>
+              <p className="text-sm text-gray-600">Join our mailing list to get notified when units become available</p>
+            </div>
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">2</div>
+              <h4 className="font-semibold">Apply</h4>
+              <p className="text-sm text-gray-600">Submit your application when a suitable unit opens up</p>
+            </div>
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">3</div>
+              <h4 className="font-semibold">Interview</h4>
+              <p className="text-sm text-gray-600">If selected, participate in our community interview process</p>
+            </div>
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">4</div>
+              <h4 className="font-semibold">Move In</h4>
+              <p className="text-sm text-gray-600">Welcome home! Join our thriving cooperative community</p>
+            </div>
+          </div>
+          <p className="text-gray-600 mt-8 max-w-2xl mx-auto">
+            Applications are kept on file for one year and automatically considered for future openings. 
+            We typically receive around 500 applications, so early submission is encouraged!
+          </p>
         </div>
       </section>
 
