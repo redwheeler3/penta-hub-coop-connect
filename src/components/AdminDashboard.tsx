@@ -122,9 +122,9 @@ const AdminDashboard = () => {
   const [filters, setFilters] = useState({
     minIncome: "",
     maxIncome: "",
-    familySize: "",
-    ownsRealEstate: "",
-    unitSize: ""
+    familySize: "all",
+    ownsRealEstate: "all",
+    unitSize: "all"
   });
 
   const applyFilters = () => {
@@ -136,13 +136,13 @@ const AdminDashboard = () => {
     if (filters.maxIncome) {
       filtered = filtered.filter(app => app.income <= parseInt(filters.maxIncome));
     }
-    if (filters.familySize) {
+    if (filters.familySize !== "all") {
       filtered = filtered.filter(app => app.familySize === parseInt(filters.familySize));
     }
-    if (filters.ownsRealEstate) {
+    if (filters.ownsRealEstate !== "all") {
       filtered = filtered.filter(app => app.ownsRealEstate === filters.ownsRealEstate);
     }
-    if (filters.unitSize) {
+    if (filters.unitSize !== "all") {
       filtered = filtered.filter(app => app.unitSize === filters.unitSize);
     }
 
@@ -153,9 +153,9 @@ const AdminDashboard = () => {
     setFilters({
       minIncome: "",
       maxIncome: "",
-      familySize: "",
-      ownsRealEstate: "",
-      unitSize: ""
+      familySize: "all",
+      ownsRealEstate: "all",
+      unitSize: "all"
     });
     setFilteredApplications(applications);
   };
@@ -230,7 +230,7 @@ const AdminDashboard = () => {
                   <SelectValue placeholder="Any size" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Any size</SelectItem>
+                  <SelectItem value="all">Any size</SelectItem>
                   <SelectItem value="1">1 person</SelectItem>
                   <SelectItem value="2">2 people</SelectItem>
                   <SelectItem value="3">3 people</SelectItem>
@@ -245,7 +245,7 @@ const AdminDashboard = () => {
                   <SelectValue placeholder="Any" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Any</SelectItem>
+                  <SelectItem value="all">Any</SelectItem>
                   <SelectItem value="yes">Yes</SelectItem>
                   <SelectItem value="no">No</SelectItem>
                 </SelectContent>
@@ -258,7 +258,7 @@ const AdminDashboard = () => {
                   <SelectValue placeholder="Any size" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Any size</SelectItem>
+                  <SelectItem value="all">Any size</SelectItem>
                   <SelectItem value="1-bedroom">1 bedroom</SelectItem>
                   <SelectItem value="2-bedroom">2 bedroom</SelectItem>
                   <SelectItem value="3-bedroom">3 bedroom</SelectItem>

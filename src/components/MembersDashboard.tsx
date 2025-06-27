@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Home, Users, FileText, LogOut, Settings } from "lucide-react";
+import { Home, Users, FileText, LogOut, Settings, ClipboardList } from "lucide-react";
 import Navigation from "./Navigation";
 import ForumSection from "./ForumSection";
 import FileStorage from "./FileStorage";
@@ -34,7 +34,7 @@ const MembersDashboard = ({ onLogout }: MembersDashboardProps) => {
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="documents">Documents</TabsTrigger>
             <TabsTrigger value="forum">Forum</TabsTrigger>
-            <TabsTrigger value="admin">Admin</TabsTrigger>
+            <TabsTrigger value="applications">Applications</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -117,12 +117,15 @@ const MembersDashboard = ({ onLogout }: MembersDashboardProps) => {
             <ForumSection />
           </TabsContent>
 
-          <TabsContent value="admin">
+          <TabsContent value="applications">
             <Card>
               <CardHeader>
-                <CardTitle>Application Management</CardTitle>
+                <CardTitle className="flex items-center">
+                  <ClipboardList className="h-5 w-5 mr-2" />
+                  Housing Applications
+                </CardTitle>
                 <CardDescription>
-                  View, filter, and export housing applications
+                  View, filter, and export housing applications (authorized members only)
                 </CardDescription>
               </CardHeader>
               <CardContent>
