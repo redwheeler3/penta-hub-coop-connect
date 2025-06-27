@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, FileText, Lock } from "lucide-react";
@@ -36,7 +37,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section with Background Image */}
-      <section className="relative py-20 px-4 bg-cover bg-center" style={{backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/lovable-uploads/b8ba0b0a-3797-4fb8-838c-6f51d58d9b0f.png')"}}>
+      <section className="relative py-20 px-4 bg-cover bg-center" style={{backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/lovable-uploads/87aa916d-6a62-4e0c-99b6-19ac74c367c4.png')"}}>
         <div className="max-w-7xl mx-auto text-center text-white">
           <h2 className="text-5xl font-bold mb-6">
             Welcome to Penta Housing Co-Op
@@ -69,15 +70,15 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="/lovable-uploads/47cdec9e-cebc-416c-a2f5-c2db0cb41e6e.png" 
-                alt="Penta Co-op playground and community area" 
+                src="/lovable-uploads/72d0c5b6-c32f-4cd3-8128-d02007d26597.png" 
+                alt="Peaceful garden courtyard with mature trees and natural wood buildings" 
                 className="w-full h-64 object-cover"
               />
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="/lovable-uploads/d46b9bf1-78ae-41d1-8b55-5e87a24df421.png" 
-                alt="Natural wood buildings among mature trees" 
+                src="/lovable-uploads/80c8891c-d9d6-49ec-a7b8-b8418d8c820c.png" 
+                alt="Community playground and shared outdoor spaces with basketball hoop" 
                 className="w-full h-64 object-cover"
               />
             </div>
@@ -125,11 +126,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Application Process Overview */}
+      {/* How to Join Our Community - Combined Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-3xl font-bold text-gray-900 mb-8">How to Join Our Community</h3>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-4 gap-6 mb-12">
             <div className="space-y-4">
               <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">1</div>
               <h4 className="font-semibold">Subscribe</h4>
@@ -152,12 +153,11 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="mt-12 bg-green-50 rounded-lg p-6">
+          <div className="bg-green-50 rounded-lg p-6">
             <h4 className="text-lg font-semibold text-gray-900 mb-4">Application Process Details</h4>
             <div className="text-left max-w-3xl mx-auto space-y-3 text-sm text-gray-700">
               <p><strong>Application Review:</strong> We keep applications on file for one year and automatically review them when new units become available.</p>
               <p><strong>Reapplication:</strong> If you already have an application on file and subscribe to our mailing list, you can submit a new application when spaces open if you prefer.</p>
-              <p><strong>High Demand:</strong> We typically receive around 500 applications, so early submission when units are announced is encouraged.</p>
               <p><strong>Waiting List:</strong> After one year, applications are removed, but you can rejoin our mailing list to be notified of future openings.</p>
             </div>
           </div>
