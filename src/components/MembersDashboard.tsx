@@ -10,15 +10,14 @@ import FileStorage from "./FileStorage";
 import AdminDashboard from "./AdminDashboard";
 
 interface MembersDashboardProps {
+  currentUser: string;
   onLogout: () => void;
 }
 
-const MembersDashboard = ({ onLogout }: MembersDashboardProps) => {
+const MembersDashboard = ({ currentUser, onLogout }: MembersDashboardProps) => {
   const [activeTab, setActiveTab] = useState("overview");
   
-  // Demo role system - in real app, this would come from authentication context
-  const currentUser = { role: 'admin' }; // Change to 'member' to test regular member access
-  const isAdmin = currentUser.role === 'admin';
+  const isAdmin = currentUser === 'admin';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">

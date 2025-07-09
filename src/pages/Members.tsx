@@ -10,6 +10,7 @@ import MembersDashboard from "@/components/MembersDashboard";
 
 const Members = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState<string>("");
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const { toast } = useToast();
 
@@ -29,6 +30,7 @@ const Members = () => {
 
     if (isValid) {
       setIsAuthenticated(true);
+      setCurrentUser(credentials.username);
       toast({
         title: "Welcome!",
         description: "Successfully logged into the members area.",
@@ -43,7 +45,7 @@ const Members = () => {
   };
 
   if (isAuthenticated) {
-    return <MembersDashboard onLogout={() => setIsAuthenticated(false)} />;
+    return <MembersDashboard currentUser={currentUser} onLogout={() => setIsAuthenticated(false)} />;
   }
 
   return (
