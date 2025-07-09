@@ -15,6 +15,10 @@ interface MembersDashboardProps {
 
 const MembersDashboard = ({ onLogout }: MembersDashboardProps) => {
   const [activeTab, setActiveTab] = useState("overview");
+  
+  // Demo role system - in real app, this would come from authentication context
+  const currentUser = { role: 'admin' }; // Change to 'member' to test regular member access
+  const isAdmin = currentUser.role === 'admin';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
@@ -30,11 +34,11 @@ const MembersDashboard = ({ onLogout }: MembersDashboardProps) => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className={`grid w-full ${isAdmin ? 'grid-cols-5' : 'grid-cols-4'}`}>
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="documents">Documents</TabsTrigger>
             <TabsTrigger value="forum">Forum</TabsTrigger>
-            <TabsTrigger value="applications">Applications</TabsTrigger>
+            {isAdmin && <TabsTrigger value="applications">Applications</TabsTrigger>}
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -117,22 +121,24 @@ const MembersDashboard = ({ onLogout }: MembersDashboardProps) => {
             <ForumSection />
           </TabsContent>
 
-          <TabsContent value="applications">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <ClipboardList className="h-5 w-5 mr-2" />
-                  Housing Applications
-                </CardTitle>
-                <CardDescription>
-                  View, filter, and export housing applications (authorized members only)
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <AdminDashboard />
-              </CardContent>
-            </Card>
-          </TabsContent>
+          {isAdmin && (
+            <TabsContent value="applications">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    <ClipboardList className="h-5 w-5 mr-2" />
+                    Housing Applications
+                  </CardTitle>
+                  <CardDescription>
+                    View, filter, and export housing applications (admin access only)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <AdminDashboard />
+                </CardContent>
+              </Card>
+            </TabsContent>
+          )}
 
           <TabsContent value="settings">
             <Card>

@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 
 const Apply = () => {
-  const [applicationsOpen, setApplicationsOpen] = useState(true);
+  const [applicationsOpen, setApplicationsOpen] = useState(false);
   const [currentSection, setCurrentSection] = useState(1);
   const [emailSignup, setEmailSignup] = useState("");
   const [formData, setFormData] = useState({
