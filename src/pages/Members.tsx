@@ -1,101 +1,116 @@
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
+import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
-import MembersDashboard from "@/components/MembersDashboard";
 
 const Members = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState<string>("");
-  const [credentials, setCredentials] = useState({ username: "", password: "" });
-  const { toast } = useToast();
-
-  // Demo credentials - in a real app, this would be handled by a proper auth system
-  const demoCredentials = [
-    { username: "member1", password: "demo123" },
-    { username: "member2", password: "demo456" },
-    { username: "admin", password: "admin123" }
-  ];
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const isValid = demoCredentials.some(
-      cred => cred.username === credentials.username && cred.password === credentials.password
-    );
-
-    if (isValid) {
-      setIsAuthenticated(true);
-      setCurrentUser(credentials.username);
-      toast({
-        title: "Welcome!",
-        description: "Successfully logged into the members area.",
-      });
-    } else {
-      toast({
-        title: "Login Failed",
-        description: "Invalid username or password. Try: member1/demo123",
-        variant: "destructive",
-      });
+  const memberResources = [
+    {
+      title: "Bylaws & Policies",
+      description: "Access the co-op's bylaws, policies, and governing documents",
+      icon: FileText,
+      link: "https://drive.google.com/drive/folders/bylaws-policies",
+      external: true
+    },
+    {
+      title: "Meeting Minutes",
+      description: "View minutes from board meetings and annual general meetings",
+      icon: FileText,
+      link: "https://drive.google.com/drive/folders/meeting-minutes", 
+      external: true
+    },
+    {
+      title: "Financial Reports",
+      description: "Annual financial statements and budget reports",
+      icon: FileText,
+      link: "https://drive.google.com/drive/folders/financial-reports",
+      external: true
+    },
+    {
+      title: "Maintenance Guidelines",
+      description: "Guidelines for member maintenance responsibilities",
+      icon: Users,
+      link: "https://drive.google.com/drive/folders/maintenance-guidelines",
+      external: true
+    },
+    {
+      title: "Community Forum",
+      description: "Join discussions with other members on Discord",
+      icon: MessageSquare,
+      link: "https://discord.gg/penta-coop",
+      external: true
     }
-  };
-
-  if (isAuthenticated) {
-    return <MembersDashboard currentUser={currentUser} onLogout={() => setIsAuthenticated(false)} />;
-  }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <Navigation />
       
-      <div className="max-w-md mx-auto px-4 py-12">
-        <Card className="bg-white shadow-lg">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Members Area</CardTitle>
-            <CardDescription>
-              Please log in to access member resources
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div>
-                <Label htmlFor="username">Username</Label>
-                <Input
-                  id="username"
-                  value={credentials.username}
-                  onChange={(e) => setCredentials({...credentials, username: e.target.value})}
-                  required
-                />
-              </div>
-              <div>
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={credentials.password}
-                  onChange={(e) => setCredentials({...credentials, password: e.target.value})}
-                  required
-                />
-              </div>
-              <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
-                Log In
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Members Area</h1>
+          <p className="text-lg text-gray-600">
+            Access member resources, documents, and community discussions
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {memberResources.map((resource, index) => (
+            <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="flex items-center mb-2">
+                  <resource.icon className="h-6 w-6 text-green-600 mr-3" />
+                  <CardTitle className="text-lg">{resource.title}</CardTitle>
+                  {resource.external && (
+                    <ExternalLink className="h-4 w-4 text-gray-400 ml-auto" />
+                  )}
+                </div>
+                <CardDescription>
+                  {resource.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button 
+                  asChild 
+                  className="w-full bg-green-600 hover:bg-green-700"
+                >
+                  <a 
+                    href={resource.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    Access Resource
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Need Help?</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-semibold text-lg mb-2">Contact Board</h3>
+              <p className="text-gray-600 mb-2">
+                For questions about co-op policies, maintenance issues, or board matters:
+              </p>
+              <Button variant="outline" asChild>
+                <a href="mailto:board@pentacoop.com">board@pentacoop.com</a>
               </Button>
-            </form>
-            
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600 font-semibold mb-2">Demo Credentials:</p>
-              <div className="text-xs text-gray-500 space-y-1">
-                <div>member1 / demo123</div>
-                <div>member2 / demo456</div>
-                <div>admin / admin123</div>
-              </div>
             </div>
-          </CardContent>
-        </Card>
+            <div>
+              <h3 className="font-semibold text-lg mb-2">Emergency Maintenance</h3>
+              <p className="text-gray-600 mb-2">
+                For urgent maintenance issues that require immediate attention:
+              </p>
+              <Button variant="outline" asChild>
+                <a href="tel:+1-604-555-0123">(604) 555-0123</a>
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
