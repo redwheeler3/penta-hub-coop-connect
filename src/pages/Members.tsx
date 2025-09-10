@@ -99,15 +99,19 @@ const Members = () => {
               <p className="text-sm text-gray-500">Contact Jeff Oriecuia (members have contact details)</p>
             </div>
             <div>
-              <h3 className="font-semibold text-lg mb-2">Emergency Maintenance</h3>
-              <p className="text-gray-600 mb-2">
-                For urgent maintenance issues:
-              </p>
-              <div className="space-y-2">
-                <p className="text-sm"><strong>Business Hours:</strong> <a href="tel:604-736-8775" className="text-green-600 hover:underline">(604) 736-8775</a></p>
-                <p className="text-sm"><strong>After Hours/Weekends:</strong> <a href="tel:604-736-1157" className="text-green-600 hover:underline">(604) 736-1157</a></p>
-                <p className="text-sm"><strong>Email:</strong> <a href="mailto:tpm_maintenance@tpmmanagement.ca" className="text-green-600 hover:underline">tpm_maintenance@tpmmanagement.ca</a></p>
-                <p className="text-xs text-gray-500 mt-2">TPM Real Estate Management</p>
+              <h3 className="font-semibold text-lg mb-2">Maintenance Issues</h3>
+              <div className="mb-4">
+                <h4 className="font-medium text-green-700 mb-1">TPM Real Estate Management</h4>
+                <p className="text-gray-600 mb-2">Contact for all maintenance issues:</p>
+                <div className="space-y-1">
+                  <p className="text-sm"><strong>Phone:</strong> <a href="tel:604-736-8775" className="text-green-600 hover:underline">(604) 736-8775</a></p>
+                  <p className="text-sm"><strong>Email:</strong> <a href="mailto:tpm_maintenance@tpmmanagement.ca" className="text-green-600 hover:underline">tpm_maintenance@tpmmanagement.ca</a></p>
+                </div>
+              </div>
+              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                <h4 className="font-medium text-red-800 mb-1">Emergency After Hours</h4>
+                <p className="text-sm text-red-700 mb-1">For urgent emergencies only (evenings/weekends):</p>
+                <p className="text-sm"><strong>Emergency Line:</strong> <a href="tel:604-736-1157" className="text-red-600 hover:underline">(604) 736-1157</a></p>
               </div>
             </div>
           </div>
