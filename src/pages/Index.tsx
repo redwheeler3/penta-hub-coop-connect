@@ -6,12 +6,19 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const Index = () => {
+  const BASE_URL = import.meta.env.BASE_URL;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <Navigation />
 
       {/* Hero Section with Background Image */}
-      <section className="relative py-20 px-4 bg-cover bg-center" style={{backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./lovable-uploads/87aa916d-6a62-4e0c-99b6-19ac74c367c4.png')"}}>
+      <section
+        className="relative py-20 px-4 bg-cover bg-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${BASE_URL}lovable-uploads/87aa916d-6a62-4e0c-99b6-19ac74c367c4.png')`,
+        }}
+      >
         <div className="max-w-7xl mx-auto text-center text-white">
           <h2 className="text-5xl font-bold mb-6">
             Welcome to Penta Housing Co-Op
@@ -44,14 +51,14 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="./lovable-uploads/72d0c5b6-c32f-4cd3-8128-d02007d26597.png" 
+                src={`${BASE_URL}lovable-uploads/72d0c5b6-c32f-4cd3-8128-d02007d26597.png`} 
                 alt="Peaceful garden courtyard with mature trees and natural wood buildings" 
                 className="w-full h-64 object-cover"
               />
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="./lovable-uploads/80c8891c-d9d6-49ec-a7b8-b8418d8c820c.png" 
+                src={`${BASE_URL}lovable-uploads/80c8891c-d9d6-49ec-a7b8-b8418d8c820c.png`} 
                 alt="Community playground and shared outdoor spaces with basketball hoop" 
                 className="w-full h-64 object-cover"
               />
