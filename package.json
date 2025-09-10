@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://redwheeler3.github.io/penta-hub-coop-connect/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
