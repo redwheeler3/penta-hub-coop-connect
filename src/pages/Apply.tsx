@@ -208,31 +208,6 @@ const Apply = () => {
           </div>
         )}
 
-        <div className="mt-12 text-center">
-          <Card className="bg-white shadow-lg">
-            <CardHeader>
-              <CardTitle>Questions?</CardTitle>
-              <CardDescription>
-                Contact us for more information about membership and applications
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Button variant="outline" asChild>
-                  <a href="mailto:info@pentacoop.com">
-                    <Mail className="h-4 w-4 mr-2" />
-                    info@pentacoop.com
-                  </a>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a href="tel:+1-604-555-0123">
-                    (604) 555-0123
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </div>
   );
