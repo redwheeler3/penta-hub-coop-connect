@@ -21,14 +21,14 @@ const Members = () => {
       external: true
     },
     {
-      title: "Financial Reports",
-      description: "Annual financial statements and budget reports",
+      title: "Management Reports",
+      description: "Reports provided by our management company, TPM Real Estate Management",
       icon: FileText,
-      link: "https://drive.google.com/drive/folders/financial-reports",
+      link: "https://drive.google.com/drive/folders/management-reports",
       external: true
     },
     {
-      title: "Maintenance Guidelines",
+      title: "Maintenance",
       description: "Guidelines for member maintenance responsibilities",
       icon: Users,
       link: "https://drive.google.com/drive/folders/maintenance-guidelines",
@@ -92,22 +92,23 @@ const Members = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Need Help?</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold text-lg mb-2">Contact Board</h3>
+              <h3 className="font-semibold text-lg mb-2">Technical Assistance</h3>
               <p className="text-gray-600 mb-2">
-                For questions about co-op policies, maintenance issues, or board matters:
+                For technical support with the website or co-op systems:
               </p>
-              <Button variant="outline" asChild>
-                <a href="mailto:board@pentacoop.com">board@pentacoop.com</a>
-              </Button>
+              <p className="text-sm text-gray-500">Contact Jeff Oriecuia (members have contact details)</p>
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-2">Emergency Maintenance</h3>
               <p className="text-gray-600 mb-2">
-                For urgent maintenance issues that require immediate attention:
+                For urgent maintenance issues:
               </p>
-              <Button variant="outline" asChild>
-                <a href="tel:+1-604-555-0123">(604) 555-0123</a>
-              </Button>
+              <div className="space-y-2">
+                <p className="text-sm"><strong>Business Hours:</strong> <a href="tel:604-736-8775" className="text-green-600 hover:underline">(604) 736-8775</a></p>
+                <p className="text-sm"><strong>After Hours/Weekends:</strong> <a href="tel:604-736-1157" className="text-green-600 hover:underline">(604) 736-1157</a></p>
+                <p className="text-sm"><strong>Email:</strong> <a href="mailto:tpm_maintenance@tpmmanagement.ca" className="text-green-600 hover:underline">tpm_maintenance@tpmmanagement.ca</a></p>
+                <p className="text-xs text-gray-500 mt-2">TPM Real Estate Management</p>
+              </div>
             </div>
           </div>
         </div>
