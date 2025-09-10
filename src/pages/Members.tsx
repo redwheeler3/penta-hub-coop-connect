@@ -22,7 +22,7 @@ const Members = () => {
     },
     {
       title: "Management Reports",
-      description: "Reports provided by our management company, TPM Real Estate Management",
+      description: "Reports provided by our management company",
       icon: FileText,
       link: "https://drive.google.com/drive/folders/management-reports",
       external: true
