@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const Apply = () => {
@@ -189,11 +190,11 @@ const Apply = () => {
                       <Label className="text-left block mb-3">Bedroom Preferences (select all that interest you)</Label>
                       <div className="space-y-3">
                         {[
-                          { id: "1-bedroom", label: "1 Bedroom" },
-                          { id: "2-bedroom", label: "2 Bedroom" },
-                          { id: "3-bedroom", label: "3 Bedroom" }
+                          { id: "1-bedroom", label: "1 Bedroom", occupancy: "1 or 2 adults" },
+                          { id: "2-bedroom", label: "2 Bedroom", occupancy: "1 or 2 adults + 1 or more children under 18" },
+                          { id: "3-bedroom", label: "3 Bedroom", occupancy: "1 or 2 adults + 2 or more children under 18" }
                         ].map((option) => (
-                          <div key={option.id} className="flex items-center space-x-2">
+                          <div key={option.id} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
                             <Checkbox
                               id={option.id}
                               checked={bedroomPreferences.includes(option.id)}
@@ -204,10 +205,14 @@ const Apply = () => {
                                   setBedroomPreferences(bedroomPreferences.filter(p => p !== option.id));
                                 }
                               }}
+                              className="mt-1"
                             />
-                            <Label htmlFor={option.id} className="text-sm font-normal cursor-pointer">
-                              {option.label}
-                            </Label>
+                            <div className="flex-1">
+                              <Label htmlFor={option.id} className="font-medium cursor-pointer block">
+                                {option.label}
+                              </Label>
+                              <p className="text-sm text-gray-600 mt-1">{option.occupancy}</p>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -220,43 +225,32 @@ const Apply = () => {
                   </form>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-4">Occupancy Guidelines</h3>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex justify-between items-center py-2 border-b border-blue-200">
-                      <span className="font-medium">1 Bedroom</span>
-                      <span className="text-gray-600">1 or 2 adults</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b border-blue-200">
-                      <span className="font-medium">2 Bedroom</span>
-                      <span className="text-gray-600">1 or 2 adults + 1 or more children under 18</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2">
-                      <span className="font-medium">3 Bedroom</span>
-                      <span className="text-gray-600">1 or 2 adults + 2 or more children under 18</span>
-                    </div>
-                  </div>
-                </div>
-
                 <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-4">About Penta Co-operative Housing</h3>
-                  <div className="grid md:grid-cols-2 gap-6 text-sm">
+                  <h3 className="text-lg font-semibold mb-4">About Penta Housing Co-Op</h3>
+                  <div className="grid md:grid-cols-2 gap-6 text-sm mb-4">
                     <div>
                       <h4 className="font-medium mb-2">Location</h4>
-                      <p className="text-gray-600">Near Jericho Beach, Vancouver</p>
+                      <p className="text-gray-600">Near Jericho Beach, Point Grey, Vancouver</p>
                     </div>
                     <div>
                       <h4 className="font-medium mb-2">Community</h4>
-                      <p className="text-gray-600">Family-oriented cooperative housing</p>
+                      <p className="text-gray-600">Family-oriented cooperative housing since 1978</p>
                     </div>
                     <div>
-                      <h4 className="font-medium mb-2">Unit Types</h4>
-                      <p className="text-gray-600">1, 2, and 3 bedroom units</p>
+                      <h4 className="font-medium mb-2">Housing Types</h4>
+                      <p className="text-gray-600">1, 2, and 3 bedroom units available</p>
                     </div>
                     <div>
                       <h4 className="font-medium mb-2">Benefits</h4>
                       <p className="text-gray-600">Affordable housing with community support</p>
                     </div>
+                  </div>
+                  <div className="text-center">
+                    <Link to="/about">
+                      <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50">
+                        Learn More About Us
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </CardContent>

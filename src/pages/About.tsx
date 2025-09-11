@@ -80,6 +80,64 @@ const About = () => {
           </div>
         </div>
 
+        {/* Location Section */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Location</h2>
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Near Jericho Beach</h3>
+                <p className="text-gray-600 mb-4">
+                  Penta Housing Co-Op is nestled in Vancouver's prestigious Point Grey neighborhood, 
+                  just steps away from the beautiful Jericho Beach. This prime location offers 
+                  residents the perfect blend of urban convenience and natural tranquility.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  Jericho Beach is one of Vancouver's most beloved destinations, featuring stunning 
+                  views of the North Shore mountains and downtown skyline. The large Jericho Park 
+                  provides a peaceful buffer from city noise while maintaining easy access to all 
+                  urban amenities.
+                </p>
+                <p className="text-gray-600">
+                  Our residents enjoy year-round access to beach activities including kayaking, 
+                  sailing, and windsurfing, with equipment rentals available nearby. The area's 
+                  natural beauty and recreational opportunities make it an ideal setting for 
+                  community living.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Neighborhood Highlights</h3>
+                <ul className="text-gray-600 space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Walking distance to Jericho Beach and English Bay
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Close to UBC campus and transit connections
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Access to parks, trails, and recreational facilities
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Nearby shopping at West 4th Avenue and Broadway
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Family-friendly community with excellent schools
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Stunning views of mountains and ocean
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* About Co-op Housing Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">About Co-op Housing</h2>
@@ -143,7 +201,7 @@ const About = () => {
                   href="https://chfcanada.coop" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 border border-green-600 text-green-600 rounded-md hover:bg-green-50 transition-colors"
+                  className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
                 >
                   Cooperative Housing Federation of Canada
                 </a>
