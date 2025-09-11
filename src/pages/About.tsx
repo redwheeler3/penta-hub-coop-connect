@@ -127,10 +127,18 @@ const About = () => {
                   <Waves className="h-5 w-5 text-blue-500 mr-2" />
                   <span className="text-sm">Year-round access to beach activities including kayaking, sailing, and windsurfing</span>
                 </div>
-                <div className="flex items-center text-gray-600">
+                <div className="flex items-center text-gray-600 mb-6">
                   <Mountain className="h-5 w-5 text-blue-500 mr-2" />
                   <span className="text-sm">Stunning views of mountains and ocean from the neighborhood</span>
                 </div>
+                <a 
+                  href="https://govancity.com/neighbourhoods/point-grey/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hover-scale shadow-md text-sm"
+                >
+                  Explore Point Grey Neighborhood Guide
+                </a>
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Neighborhood Highlights</h3>
