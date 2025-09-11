@@ -94,14 +94,18 @@ const Members = () => {
             <div>
               <h3 className="font-semibold text-lg mb-2">Technical Assistance</h3>
               <p className="text-gray-600 mb-2">
-                For technical support with the website or co-op systems:
+                For technical support with the website:
               </p>
               <p className="text-sm text-gray-500">Contact Jeff Oriecuia (members have contact details)</p>
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-2">Maintenance Issues</h3>
               <div className="mb-4">
-                <h4 className="font-medium text-green-700 mb-1">TPM Real Estate Management</h4>
+                <h4 className="font-medium text-green-700 mb-1">
+                  <a href="https://www.tpmmanagement.ca" target="_blank" rel="noopener noreferrer" className="text-green-700 hover:text-green-800 hover:underline">
+                    TPM Real Estate Management
+                  </a>
+                </h4>
                 <p className="text-gray-600 mb-2">Contact for all maintenance issues:</p>
                 <div className="space-y-1">
                   <p className="text-sm"><strong>Phone:</strong> <a href="tel:604-736-8775" className="text-green-600 hover:underline">(604) 736-8775</a></p>
