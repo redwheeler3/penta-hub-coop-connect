@@ -103,7 +103,7 @@ const Apply = () => {
                     Complete Application Form
                   </Button>
                   <p className="text-sm text-gray-600 mt-2">
-                    Opens in a new tab - Google Form
+                    Opens in a new tab
                   </p>
                 </div>
                 
@@ -122,7 +122,7 @@ const Apply = () => {
                       Subscribe for Updates
                     </Button>
                     <p className="text-sm text-gray-600 mt-2">
-                      Opens Google Form in new tab
+                      Opens in a new tab
                     </p>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const Apply = () => {
                       Subscribe for Updates
                     </Button>
                     <p className="text-sm text-gray-600 mt-2">
-                      Opens Google Form in new tab
+                      Opens in a new tab
                     </p>
                   </div>
                 </div>
