@@ -158,26 +158,26 @@ const Apply = () => {
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                   <h3 className="text-lg font-semibold mb-4">Application Process</h3>
-                  <div className="grid md:grid-cols-4 gap-4 text-sm mb-4">
-                    <div className="text-center">
-                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">1</div>
-                      <h4 className="font-medium mb-1">Subscribe</h4>
-                      <p className="text-gray-600">Join our mailing list to receive notifications when applications open and learn about available units</p>
+                  <div className="grid md:grid-cols-4 gap-6">
+                    <div className="text-center space-y-4">
+                      <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">1</div>
+                      <h4 className="font-semibold">Subscribe</h4>
+                      <p className="text-sm text-gray-600">Join our mailing list to get notified when units become available</p>
                     </div>
-                    <div className="text-center">
-                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">2</div>
-                      <h4 className="font-medium mb-1">Apply</h4>
-                      <p className="text-gray-600">Complete our comprehensive application form with references, financial information, and housing preferences</p>
+                    <div className="text-center space-y-4">
+                      <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">2</div>
+                      <h4 className="font-semibold">Apply</h4>
+                      <p className="text-sm text-gray-600">Submit your application when a suitable unit opens up</p>
                     </div>
-                    <div className="text-center">
-                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">3</div>
-                      <h4 className="font-medium mb-1">Interview</h4>
-                      <p className="text-gray-600">Meet with our community members to discuss cooperative living and ensure mutual compatibility</p>
+                    <div className="text-center space-y-4">
+                      <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">3</div>
+                      <h4 className="font-semibold">Interview</h4>
+                      <p className="text-sm text-gray-600">If selected, participate in our community interview process</p>
                     </div>
-                    <div className="text-center">
-                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">4</div>
-                      <h4 className="font-medium mb-1">Move In</h4>
-                      <p className="text-gray-600">Join our community and begin your journey in cooperative housing with orientation and welcome activities</p>
+                    <div className="text-center space-y-4">
+                      <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">4</div>
+                      <h4 className="font-semibold">Move In</h4>
+                      <p className="text-sm text-gray-600">Welcome home! Join our thriving cooperative community</p>
                     </div>
                   </div>
                   <div className="text-center">
