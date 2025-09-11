@@ -132,7 +132,7 @@ const Apply = () => {
                 </div>
                 <CardTitle className="text-2xl text-orange-600">Applications Currently Closed</CardTitle>
                 <CardDescription className="text-lg">
-                  No units are currently available. Applications typically open every 2 or 3 years when members move out.
+                  No units are currently available. Applications typically open every 2 or 3 years.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
