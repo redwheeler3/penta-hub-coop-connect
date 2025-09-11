@@ -147,7 +147,7 @@ const About = () => {
                     <Waves className="h-5 w-5 text-blue-600 mr-3 mt-1" />
                     <div>
                       <span className="font-medium">Beach Access</span>
-                      <p className="text-sm text-gray-600">Walking distance to Jericho Beach and English Bay</p>
+                      <p className="text-sm text-gray-600">Walking distance to Jericho Beach</p>
                     </div>
                   </div>
                   <div className="flex items-start bg-white rounded-lg p-3 shadow-sm">

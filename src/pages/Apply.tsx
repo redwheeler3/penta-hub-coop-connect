@@ -17,7 +17,7 @@ const Apply = () => {
 
   const handleGoogleFormClick = () => {
     // Open Google Form in new tab
-    window.open("https://forms.gle/your-google-form-id", "_blank");
+    window.open("https://applications.pentacoop.com/", "_blank");
   };
 
   const handleEmailSubmit = async (e: React.FormEvent) => {

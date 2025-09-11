@@ -10,28 +10,28 @@ const Members = () => {
       title: "Bylaws & Policies",
       description: "Access the co-op's bylaws, policies, and governing documents",
       icon: FileText,
-      link: "https://drive.google.com/drive/folders/bylaws-policies",
+      link: "https://drive.google.com/drive/folders/1O2zb24edHeVHKLkTu5lSM0MthMccnLPF?usp=drive_link",
       external: true
     },
     {
       title: "Meeting Minutes",
       description: "View minutes from board meetings and annual general meetings",
       icon: FileText,
-      link: "https://drive.google.com/drive/folders/meeting-minutes", 
+      link: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link", 
       external: true
     },
     {
       title: "Management Reports",
       description: "Reports provided by our management company",
       icon: FileText,
-      link: "https://drive.google.com/drive/folders/management-reports",
+      link: "https://drive.google.com/drive/folders/16Bjujq-0VlEEJCqToI52RMbnJ5cuglc7?usp=drive_link",
       external: true
     },
     {
       title: "Maintenance",
       description: "Guidelines for member maintenance responsibilities",
       icon: Users,
-      link: "https://drive.google.com/drive/folders/maintenance-guidelines",
+      link: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link",
       external: true
     },
     {
