@@ -131,7 +131,7 @@ const Apply = () => {
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                   <h3 className="text-lg font-semibold mb-2">Eligibility Requirements</h3>
                   <ul className="text-sm space-y-1">
-                    <li>• Household must be 1 or 2 adults PLUS 1-4 children under 18</li>
+                    <li>• Household must be 1 or 2 adults PLUS 1 or more children under 18</li>
                     <li>• Must meet income requirements</li>
                     <li>• References and credit check required</li>
                     <li>• Commitment to cooperative principles</li>
@@ -149,6 +149,64 @@ const Apply = () => {
                   <p className="text-sm text-gray-600 mt-2">
                     Opens in a new tab - Google Form
                   </p>
+                </div>
+                
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 mt-6">
+                  <h3 className="text-lg font-semibold mb-2">Don't Qualify for This Unit?</h3>
+                  <p className="text-gray-600 mb-4">
+                    Join our mailing list to be notified when units matching your preferences become available
+                  </p>
+                  
+                  <form onSubmit={handleEmailSubmit} className="max-w-lg mx-auto space-y-4">
+                    <div>
+                      <Label htmlFor="email-open" className="text-left block mb-2">Email Address</Label>
+                      <Input
+                        id="email-open"
+                        type="email"
+                        placeholder="Enter your email address"
+                        value={emailSignup}
+                        onChange={(e) => setEmailSignup(e.target.value)}
+                        required
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label className="text-left block mb-3">Bedroom Preferences (select all that interest you)</Label>
+                      <div className="space-y-3">
+                        {[
+                          { id: "1-bedroom", label: "1 Bedroom", occupancy: "1 or 2 adults" },
+                          { id: "2-bedroom", label: "2 Bedroom", occupancy: "1 or 2 adults + 1 or more children under 18" },
+                          { id: "3-bedroom", label: "3 Bedroom", occupancy: "1 or 2 adults + 2 or more children under 18" }
+                        ].map((option) => (
+                          <div key={option.id} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                            <Checkbox
+                              id={`${option.id}-open`}
+                              checked={bedroomPreferences.includes(option.id)}
+                              onCheckedChange={(checked) => {
+                                if (checked) {
+                                  setBedroomPreferences([...bedroomPreferences, option.id]);
+                                } else {
+                                  setBedroomPreferences(bedroomPreferences.filter(p => p !== option.id));
+                                }
+                              }}
+                              className="mt-1"
+                            />
+                            <div className="flex-1">
+                              <Label htmlFor={`${option.id}-open`} className="font-medium cursor-pointer block">
+                                {option.label}
+                              </Label>
+                              <p className="text-sm text-gray-600 mt-1">{option.occupancy}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600">
+                      <Mail className="h-4 w-4 mr-2" />
+                      Subscribe for Updates
+                    </Button>
+                  </form>
                 </div>
               </CardContent>
             </Card>
@@ -225,30 +283,34 @@ const Apply = () => {
                   </form>
                 </div>
 
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-4">About Penta Housing Co-Op</h3>
-                  <div className="grid md:grid-cols-2 gap-6 text-sm mb-4">
-                    <div>
-                      <h4 className="font-medium mb-2">Location</h4>
-                      <p className="text-gray-600">Near Jericho Beach, Point Grey, Vancouver</p>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-4">Application Process</h3>
+                  <div className="grid md:grid-cols-4 gap-4 text-sm mb-4">
+                    <div className="text-center">
+                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">1</div>
+                      <h4 className="font-medium mb-1">Subscribe</h4>
+                      <p className="text-gray-600">Join our mailing list</p>
                     </div>
-                    <div>
-                      <h4 className="font-medium mb-2">Community</h4>
-                      <p className="text-gray-600">Family-oriented cooperative housing since 1978</p>
+                    <div className="text-center">
+                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">2</div>
+                      <h4 className="font-medium mb-1">Apply</h4>
+                      <p className="text-gray-600">Submit application</p>
                     </div>
-                    <div>
-                      <h4 className="font-medium mb-2">Housing Types</h4>
-                      <p className="text-gray-600">1, 2, and 3 bedroom units available</p>
+                    <div className="text-center">
+                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">3</div>
+                      <h4 className="font-medium mb-1">Interview</h4>
+                      <p className="text-gray-600">Community interview</p>
                     </div>
-                    <div>
-                      <h4 className="font-medium mb-2">Benefits</h4>
-                      <p className="text-gray-600">Affordable housing with community support</p>
+                    <div className="text-center">
+                      <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">4</div>
+                      <h4 className="font-medium mb-1">Move In</h4>
+                      <p className="text-gray-600">Welcome home!</p>
                     </div>
                   </div>
                   <div className="text-center">
                     <Link to="/about">
                       <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50">
-                        Learn More About Us
+                        Learn More About Our Community
                       </Button>
                     </Link>
                   </div>
