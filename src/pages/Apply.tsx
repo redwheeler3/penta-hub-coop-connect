@@ -81,17 +81,10 @@ const Apply = () => {
                     <div>
                       <span className="font-medium">Application Deadline:</span> June 26, 2024
                     </div>
+                    <div className="md:col-span-2">
+                      <span className="font-medium">Household Requirements:</span> 1 or 2 adults PLUS 1 or more children under 18
+                    </div>
                   </div>
-                </div>
-
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-2">Eligibility Requirements</h3>
-                  <ul className="text-sm space-y-1">
-                    <li>• Household must be 1 or 2 adults PLUS 1 or more children under 18</li>
-                    <li>• Willingness to participate in community activities and governance</li>
-                    <li>• References and credit check required</li>
-                    <li>• Commitment to cooperative principles</li>
-                  </ul>
                 </div>
 
                 <div className="text-center">
