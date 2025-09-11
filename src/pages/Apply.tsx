@@ -162,22 +162,22 @@ const Apply = () => {
                     <div className="text-center">
                       <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">1</div>
                       <h4 className="font-medium mb-1">Subscribe</h4>
-                      <p className="text-gray-600">Join our mailing list</p>
+                      <p className="text-gray-600">Join our mailing list to receive notifications when applications open and learn about available units</p>
                     </div>
                     <div className="text-center">
                       <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">2</div>
                       <h4 className="font-medium mb-1">Apply</h4>
-                      <p className="text-gray-600">Submit application</p>
+                      <p className="text-gray-600">Complete our comprehensive application form with references, financial information, and housing preferences</p>
                     </div>
                     <div className="text-center">
                       <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">3</div>
                       <h4 className="font-medium mb-1">Interview</h4>
-                      <p className="text-gray-600">Community interview</p>
+                      <p className="text-gray-600">Meet with our community members to discuss cooperative living and ensure mutual compatibility</p>
                     </div>
                     <div className="text-center">
                       <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">4</div>
                       <h4 className="font-medium mb-1">Move In</h4>
-                      <p className="text-gray-600">Welcome home!</p>
+                      <p className="text-gray-600">Join our community and begin your journey in cooperative housing with orientation and welcome activities</p>
                     </div>
                   </div>
                   <div className="text-center">
