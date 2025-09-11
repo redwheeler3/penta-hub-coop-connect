@@ -115,7 +115,7 @@ const Apply = () => {
                   
                   <div className="text-center">
                     <Button 
-                      onClick={() => window.open("https://forms.google.com/your-mailing-list-form", "_blank")}
+                      onClick={() => window.open("https://mailinglist.pentacoop.com/", "_blank")}
                       className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
                     >
                       <ExternalLink className="h-5 w-5 mr-2" />
@@ -151,7 +151,7 @@ const Apply = () => {
                   
                   <div className="text-center">
                     <Button 
-                      onClick={() => window.open("https://forms.google.com/your-mailing-list-form", "_blank")}
+                      onClick={() => window.open("https://mailinglist.pentacoop.com/", "_blank")}
                       className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
                     >
                       <ExternalLink className="h-5 w-5 mr-2" />
