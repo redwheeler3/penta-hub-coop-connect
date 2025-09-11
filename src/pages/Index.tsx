@@ -145,6 +145,21 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Call to Action */}
+      <section className="py-16 px-4 bg-green-600">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-3xl font-bold text-white mb-6">Ready to Join Our Community?</h3>
+          <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
+            Take the first step toward cooperative living. Submit your application today and become part of our vibrant community.
+          </p>
+          <Link to="/apply">
+            <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
+              Start Your Application
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
