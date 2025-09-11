@@ -160,15 +160,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center">
-            <h4 className="text-2xl font-bold mb-4">Penta Housing Co-Op</h4>
-            <p className="text-gray-400 mb-6">Building community, one home at a time</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

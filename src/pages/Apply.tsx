@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -10,6 +11,7 @@ import Navigation from "@/components/Navigation";
 const Apply = () => {
   const [applicationsOpen, setApplicationsOpen] = useState(false);
   const [emailSignup, setEmailSignup] = useState("");
+  const [bedroomPreference, setBedroomPreference] = useState("");
   const { toast } = useToast();
 
   const handleGoogleFormClick = () => {
@@ -19,7 +21,14 @@ const Apply = () => {
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!emailSignup.trim()) return;
+    if (!emailSignup.trim() || !bedroomPreference) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all fields.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     // Send email to Google Sheets via Google Apps Script Web App
     try {
@@ -31,6 +40,7 @@ const Apply = () => {
         mode: "no-cors",
         body: JSON.stringify({
           email: emailSignup,
+          bedroomPreference: bedroomPreference,
           timestamp: new Date().toISOString(),
           type: "mailing_list_signup"
         }),
@@ -41,6 +51,7 @@ const Apply = () => {
         description: "We'll notify you when applications open again.",
       });
       setEmailSignup("");
+      setBedroomPreference("");
     } catch (error) {
       console.error("Error submitting email:", error);
       toast({
@@ -158,28 +169,59 @@ const Apply = () => {
                 <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 text-center">
                   <h3 className="text-lg font-semibold mb-2">Get Notified</h3>
                   <p className="text-gray-600 mb-4">
-                    Join our mailing list to be the first to know when new units become available
+                    Join our mailing list to be the first to know when units matching your preferences become available
                   </p>
                   
-                  <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto">
-                    <div className="flex gap-2">
-                      <div className="flex-1">
-                        <Label htmlFor="email" className="sr-only">Email Address</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="Enter your email address"
-                          value={emailSignup}
-                          onChange={(e) => setEmailSignup(e.target.value)}
-                          required
-                        />
-                      </div>
-                      <Button type="submit" className="bg-orange-500 hover:bg-orange-600">
-                        <Mail className="h-4 w-4 mr-2" />
-                        Subscribe
-                      </Button>
+                  <form onSubmit={handleEmailSubmit} className="max-w-lg mx-auto space-y-4">
+                    <div>
+                      <Label htmlFor="email" className="text-left block mb-2">Email Address</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email address"
+                        value={emailSignup}
+                        onChange={(e) => setEmailSignup(e.target.value)}
+                        required
+                      />
                     </div>
+                    
+                    <div>
+                      <Label htmlFor="bedroom-preference" className="text-left block mb-2">Bedroom Preference</Label>
+                      <Select value={bedroomPreference} onValueChange={setBedroomPreference} required>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select bedroom preference" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1-bedroom">1 Bedroom</SelectItem>
+                          <SelectItem value="2-bedroom">2 Bedroom</SelectItem>
+                          <SelectItem value="3-bedroom">3 Bedroom</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    
+                    <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600">
+                      <Mail className="h-4 w-4 mr-2" />
+                      Subscribe for Updates
+                    </Button>
                   </form>
+                </div>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-4">Occupancy Guidelines</h3>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between items-center py-2 border-b border-blue-200">
+                      <span className="font-medium">1 Bedroom</span>
+                      <span className="text-gray-600">1 or 2 adults</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2 border-b border-blue-200">
+                      <span className="font-medium">2 Bedroom</span>
+                      <span className="text-gray-600">1 or 2 adults + 1 or more children under 18</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2">
+                      <span className="font-medium">3 Bedroom</span>
+                      <span className="text-gray-600">1 or 2 adults + 2 or more children under 18</span>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
