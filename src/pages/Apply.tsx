@@ -33,12 +33,11 @@ const Apply = () => {
 
     // Send email to Google Sheets via Google Apps Script Web App
     try {
-      const response = await fetch("https://script.google.com/macros/s/your-script-id/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzZPP8wGrtwKEWeW_BRk0ekESYcCdh80kkrhmaupCzuzgVXRy7Y0PguzQTYIrPRow/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        mode: "no-cors",
         body: JSON.stringify({
           email: emailSignup,
           bedroomPreferences: bedroomPreferences,
@@ -46,6 +45,8 @@ const Apply = () => {
           type: "mailing_list_signup"
         }),
       });
+
+      const result = await response.json();
 
       toast({
         title: "Thank you!",
