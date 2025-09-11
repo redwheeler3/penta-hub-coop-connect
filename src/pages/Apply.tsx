@@ -37,7 +37,7 @@ const Apply = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Apply for Membership</h1>
           <p className="text-lg text-gray-600">
-            Join our cooperative housing community in Vancouver. Applications typically open every 2-3 years when units become available.
+            Join our cooperative housing community in Vancouver. We're a member-owned housing cooperative that provides affordable, sustainable housing while fostering community connections. Our residents participate in governance and share in maintaining our beautiful property together.
           </p>
         </div>
 
@@ -132,14 +132,14 @@ const Apply = () => {
                 </div>
                 <CardTitle className="text-2xl text-orange-600">Applications Currently Closed</CardTitle>
                 <CardDescription className="text-lg">
-                  No units are currently available. Applications typically open every 2-3 years when members move out.
+                  No units are currently available. Applications typically open every 2 or 3 years when members move out.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 text-center">
                   <h3 className="text-lg font-semibold mb-2">Get Notified</h3>
                   <p className="text-gray-600 mb-4">
-                    Join our mailing list to be the first to know when applications open again (typically every 2-3 years)
+                    Join our mailing list to be the first to know when applications open again
                   </p>
                   
                   <div className="text-center">
