@@ -11,8 +11,6 @@ import Navigation from "@/components/Navigation";
 
 const Apply = () => {
   const [applicationsOpen, setApplicationsOpen] = useState(false);
-  const [emailSignup, setEmailSignup] = useState("");
-  const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const { toast } = useToast();
 
   const handleGoogleFormClick = () => {
@@ -20,49 +18,6 @@ const Apply = () => {
     window.open("https://applications.pentacoop.com/", "_blank");
   };
 
-  const handleEmailSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!emailSignup.trim() || bedroomPreferences.length === 0) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all fields and select at least one bedroom preference.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Send email to Google Sheets via Google Apps Script Web App
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzZPP8wGrtwKEWeW_BRk0ekESYcCdh80kkrhmaupCzuzgVXRy7Y0PguzQTYIrPRow/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: emailSignup,
-          bedroomPreferences: bedroomPreferences,
-          timestamp: new Date().toISOString(),
-          type: "mailing_list_signup"
-        }),
-      });
-
-      const result = await response.json();
-
-      toast({
-        title: "Thank you!",
-        description: "We'll notify you when applications open again.",
-      });
-      setEmailSignup("");
-      setBedroomPreferences([]);
-    } catch (error) {
-      console.error("Error submitting email:", error);
-      toast({
-        title: "Error",
-        description: "There was an error submitting your email. Please try again.",
-        variant: "destructive",
-      });
-    }
-  };
 
   const toggleApplicationStatus = () => {
     setApplicationsOpen(!applicationsOpen);
@@ -158,56 +113,18 @@ const Apply = () => {
                     Join our mailing list to be notified when units matching your preferences become available
                   </p>
                   
-                  <form onSubmit={handleEmailSubmit} className="max-w-lg mx-auto space-y-4">
-                    <div>
-                      <Label htmlFor="email-open" className="text-left block mb-2">Email Address</Label>
-                      <Input
-                        id="email-open"
-                        type="email"
-                        placeholder="Enter your email address"
-                        value={emailSignup}
-                        onChange={(e) => setEmailSignup(e.target.value)}
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label className="text-left block mb-3">Bedroom Preferences (select all that interest you)</Label>
-                      <div className="space-y-3">
-                        {[
-                          { id: "1-bedroom", label: "1 Bedroom", occupancy: "1 or 2 adults" },
-                          { id: "2-bedroom", label: "2 Bedroom", occupancy: "1 or 2 adults + 1 or more children under 18" },
-                          { id: "3-bedroom", label: "3 Bedroom", occupancy: "1 or 2 adults + 2 or more children under 18" }
-                        ].map((option) => (
-                          <div key={option.id} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                            <Checkbox
-                              id={`${option.id}-open`}
-                              checked={bedroomPreferences.includes(option.id)}
-                              onCheckedChange={(checked) => {
-                                if (checked) {
-                                  setBedroomPreferences([...bedroomPreferences, option.id]);
-                                } else {
-                                  setBedroomPreferences(bedroomPreferences.filter(p => p !== option.id));
-                                }
-                              }}
-                              className="mt-1"
-                            />
-                            <div className="flex-1">
-                              <Label htmlFor={`${option.id}-open`} className="font-medium cursor-pointer block">
-                                {option.label}
-                              </Label>
-                              <p className="text-sm text-gray-600 mt-1">{option.occupancy}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600">
-                      <Mail className="h-4 w-4 mr-2" />
+                  <div className="text-center">
+                    <Button 
+                      onClick={() => window.open("https://forms.google.com/your-mailing-list-form", "_blank")}
+                      className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
+                    >
+                      <ExternalLink className="h-5 w-5 mr-2" />
                       Subscribe for Updates
                     </Button>
-                  </form>
+                    <p className="text-sm text-gray-600 mt-2">
+                      Opens Google Form in new tab
+                    </p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -232,56 +149,18 @@ const Apply = () => {
                     Join our mailing list to be the first to know when units matching your preferences become available
                   </p>
                   
-                  <form onSubmit={handleEmailSubmit} className="max-w-lg mx-auto space-y-4">
-                    <div>
-                      <Label htmlFor="email" className="text-left block mb-2">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email address"
-                        value={emailSignup}
-                        onChange={(e) => setEmailSignup(e.target.value)}
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label className="text-left block mb-3">Bedroom Preferences (select all that interest you)</Label>
-                      <div className="space-y-3">
-                        {[
-                          { id: "1-bedroom", label: "1 Bedroom", occupancy: "1 or 2 adults" },
-                          { id: "2-bedroom", label: "2 Bedroom", occupancy: "1 or 2 adults + 1 or more children under 18" },
-                          { id: "3-bedroom", label: "3 Bedroom", occupancy: "1 or 2 adults + 2 or more children under 18" }
-                        ].map((option) => (
-                          <div key={option.id} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                            <Checkbox
-                              id={option.id}
-                              checked={bedroomPreferences.includes(option.id)}
-                              onCheckedChange={(checked) => {
-                                if (checked) {
-                                  setBedroomPreferences([...bedroomPreferences, option.id]);
-                                } else {
-                                  setBedroomPreferences(bedroomPreferences.filter(p => p !== option.id));
-                                }
-                              }}
-                              className="mt-1"
-                            />
-                            <div className="flex-1">
-                              <Label htmlFor={option.id} className="font-medium cursor-pointer block">
-                                {option.label}
-                              </Label>
-                              <p className="text-sm text-gray-600 mt-1">{option.occupancy}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600">
-                      <Mail className="h-4 w-4 mr-2" />
+                  <div className="text-center">
+                    <Button 
+                      onClick={() => window.open("https://forms.google.com/your-mailing-list-form", "_blank")}
+                      className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
+                    >
+                      <ExternalLink className="h-5 w-5 mr-2" />
                       Subscribe for Updates
                     </Button>
-                  </form>
+                    <p className="text-sm text-gray-600 mt-2">
+                      Opens Google Form in new tab
+                    </p>
+                  </div>
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
