@@ -132,7 +132,7 @@ const Apply = () => {
                   <h3 className="text-lg font-semibold mb-2">Eligibility Requirements</h3>
                   <ul className="text-sm space-y-1">
                     <li>• Household must be 1 or 2 adults PLUS 1 or more children under 18</li>
-                    <li>• Must meet income requirements</li>
+                    <li>• Willingness to participate in community activities and governance</li>
                     <li>• References and credit check required</li>
                     <li>• Commitment to cooperative principles</li>
                   </ul>
