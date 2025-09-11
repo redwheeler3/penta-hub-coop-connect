@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -11,7 +11,7 @@ import Navigation from "@/components/Navigation";
 const Apply = () => {
   const [applicationsOpen, setApplicationsOpen] = useState(false);
   const [emailSignup, setEmailSignup] = useState("");
-  const [bedroomPreference, setBedroomPreference] = useState("");
+  const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const { toast } = useToast();
 
   const handleGoogleFormClick = () => {
@@ -21,10 +21,10 @@ const Apply = () => {
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!emailSignup.trim() || !bedroomPreference) {
+    if (!emailSignup.trim() || bedroomPreferences.length === 0) {
       toast({
         title: "Missing Information",
-        description: "Please fill in all fields.",
+        description: "Please fill in all fields and select at least one bedroom preference.",
         variant: "destructive",
       });
       return;
@@ -40,7 +40,7 @@ const Apply = () => {
         mode: "no-cors",
         body: JSON.stringify({
           email: emailSignup,
-          bedroomPreference: bedroomPreference,
+          bedroomPreferences: bedroomPreferences,
           timestamp: new Date().toISOString(),
           type: "mailing_list_signup"
         }),
@@ -51,7 +51,7 @@ const Apply = () => {
         description: "We'll notify you when applications open again.",
       });
       setEmailSignup("");
-      setBedroomPreference("");
+      setBedroomPreferences([]);
     } catch (error) {
       console.error("Error submitting email:", error);
       toast({
@@ -186,17 +186,31 @@ const Apply = () => {
                     </div>
                     
                     <div>
-                      <Label htmlFor="bedroom-preference" className="text-left block mb-2">Bedroom Preference</Label>
-                      <Select value={bedroomPreference} onValueChange={setBedroomPreference} required>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select bedroom preference" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1-bedroom">1 Bedroom</SelectItem>
-                          <SelectItem value="2-bedroom">2 Bedroom</SelectItem>
-                          <SelectItem value="3-bedroom">3 Bedroom</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label className="text-left block mb-3">Bedroom Preferences (select all that interest you)</Label>
+                      <div className="space-y-3">
+                        {[
+                          { id: "1-bedroom", label: "1 Bedroom" },
+                          { id: "2-bedroom", label: "2 Bedroom" },
+                          { id: "3-bedroom", label: "3 Bedroom" }
+                        ].map((option) => (
+                          <div key={option.id} className="flex items-center space-x-2">
+                            <Checkbox
+                              id={option.id}
+                              checked={bedroomPreferences.includes(option.id)}
+                              onCheckedChange={(checked) => {
+                                if (checked) {
+                                  setBedroomPreferences([...bedroomPreferences, option.id]);
+                                } else {
+                                  setBedroomPreferences(bedroomPreferences.filter(p => p !== option.id));
+                                }
+                              }}
+                            />
+                            <Label htmlFor={option.id} className="text-sm font-normal cursor-pointer">
+                              {option.label}
+                            </Label>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     
                     <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600">
