@@ -180,7 +180,7 @@ const Apply = () => {
                       <p className="text-sm text-gray-600">Welcome home! Join our thriving cooperative community</p>
                     </div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center mt-8">
                     <Link to="/about">
                       <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50">
                         Learn More About Our Community
