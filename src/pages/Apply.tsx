@@ -10,6 +10,86 @@ import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
+// Move EmailSignupForm outside to prevent re-creation on every render
+const EmailSignupForm = ({ 
+  email, 
+  setEmail, 
+  bedroomPreferences, 
+  handleBedroomChange, 
+  handleEmailSubmit, 
+  isSubmitting 
+}: {
+  email: string;
+  setEmail: (email: string) => void;
+  bedroomPreferences: string[];
+  handleBedroomChange: (bedroom: string, checked: boolean) => void;
+  handleEmailSubmit: (e: React.FormEvent) => void;
+  isSubmitting: boolean;
+}) => (
+  <form onSubmit={handleEmailSubmit} className="space-y-4">
+    <div>
+      <Label htmlFor="email">Email Address</Label>
+      <Input
+        id="email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your.email@example.com"
+        required
+      />
+    </div>
+    
+    <div>
+      <Label>Unit Preference</Label>
+      <div className="space-y-2 mt-2">
+        <div className="flex items-center space-x-3">
+          <Checkbox
+            id="1-bedroom"
+            checked={bedroomPreferences.includes("1-bedroom")}
+            onCheckedChange={(checked) => handleBedroomChange("1-bedroom", checked as boolean)}
+          />
+          <Label htmlFor="1-bedroom" className="font-normal">
+            1 bedroom - 1 or 2 adults
+          </Label>
+        </div>
+        
+        <div className="flex items-center space-x-3">
+          <Checkbox
+            id="2-bedroom"
+            checked={bedroomPreferences.includes("2-bedroom")}
+            onCheckedChange={(checked) => handleBedroomChange("2-bedroom", checked as boolean)}
+          />
+          <Label htmlFor="2-bedroom" className="font-normal">
+            2 bedroom - 1 or 2 adults PLUS 1 or more children under 18
+          </Label>
+        </div>
+        
+        <div className="flex items-center space-x-3">
+          <Checkbox
+            id="3-bedroom"
+            checked={bedroomPreferences.includes("3-bedroom")}
+            onCheckedChange={(checked) => handleBedroomChange("3-bedroom", checked as boolean)}
+          />
+          <Label htmlFor="3-bedroom" className="font-normal">
+            3 bedroom - 1 or 2 adults PLUS 2 or more children under 18
+          </Label>
+        </div>
+      </div>
+    </div>
+    
+    <div className="text-center pt-2">
+      <Button 
+        type="submit"
+        disabled={isSubmitting}
+        className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
+      >
+        <Mail className="h-5 w-5 mr-2" />
+        {isSubmitting ? "Subscribing..." : "Subscribe for Updates"}
+      </Button>
+    </div>
+  </form>
+);
+
 const Apply = () => {
   const [applicationsOpen, setApplicationsOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -110,70 +190,6 @@ const Apply = () => {
     }
   };
   
-  const EmailSignupForm = () => (
-    <form onSubmit={handleEmailSubmit} className="space-y-4">
-      <div>
-        <Label htmlFor="email">Email Address</Label>
-        <Input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="your.email@example.com"
-          required
-        />
-      </div>
-      
-      <div>
-        <Label>Unit Preference</Label>
-        <div className="space-y-2 mt-2">
-          <div className="flex items-center space-x-3">
-            <Checkbox
-              id="1-bedroom"
-              checked={bedroomPreferences.includes("1-bedroom")}
-              onCheckedChange={(checked) => handleBedroomChange("1-bedroom", checked as boolean)}
-            />
-            <Label htmlFor="1-bedroom" className="font-normal">
-              1 bedroom - 1 or 2 adults
-            </Label>
-          </div>
-          
-          <div className="flex items-center space-x-3">
-            <Checkbox
-              id="2-bedroom"
-              checked={bedroomPreferences.includes("2-bedroom")}
-              onCheckedChange={(checked) => handleBedroomChange("2-bedroom", checked as boolean)}
-            />
-            <Label htmlFor="2-bedroom" className="font-normal">
-              2 bedroom - 1 or 2 adults PLUS 1 or more children under 18
-            </Label>
-          </div>
-          
-          <div className="flex items-center space-x-3">
-            <Checkbox
-              id="3-bedroom"
-              checked={bedroomPreferences.includes("3-bedroom")}
-              onCheckedChange={(checked) => handleBedroomChange("3-bedroom", checked as boolean)}
-            />
-            <Label htmlFor="3-bedroom" className="font-normal">
-              3 bedroom - 1 or 2 adults PLUS 2 or more children under 18
-            </Label>
-          </div>
-        </div>
-      </div>
-      
-      <div className="text-center pt-2">
-        <Button 
-          type="submit"
-          disabled={isSubmitting}
-          className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
-        >
-          <Mail className="h-5 w-5 mr-2" />
-          {isSubmitting ? "Subscribing..." : "Subscribe for Updates"}
-        </Button>
-      </div>
-    </form>
-  );
   const handleBedroomChange = (bedroom: string, checked: boolean) => {
     if (checked) {
       setBedroomPreferences([...bedroomPreferences, bedroom]);
@@ -269,7 +285,14 @@ const Apply = () => {
                     Join our mailing list to be notified when units matching your preferences become available
                   </p>
                   
-                  <EmailSignupForm />
+                  <EmailSignupForm
+                    email={email}
+                    setEmail={setEmail}
+                    bedroomPreferences={bedroomPreferences}
+                    handleBedroomChange={handleBedroomChange}
+                    handleEmailSubmit={handleEmailSubmit}
+                    isSubmitting={isSubmitting}
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -294,7 +317,14 @@ const Apply = () => {
                     Join our mailing list to be the first to know when applications open again
                   </p>
                   
-                  <EmailSignupForm />
+                  <EmailSignupForm
+                    email={email}
+                    setEmail={setEmail}
+                    bedroomPreferences={bedroomPreferences}
+                    handleBedroomChange={handleBedroomChange}
+                    handleEmailSubmit={handleEmailSubmit}
+                    isSubmitting={isSubmitting}
+                  />
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
