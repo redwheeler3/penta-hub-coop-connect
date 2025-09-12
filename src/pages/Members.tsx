@@ -77,7 +77,7 @@ const Members = () => {
                 >
                   <a 
                     href={resource.link} 
-                    target="_parent" 
+                    target="_blank" 
                     rel="noopener noreferrer"
                   >
                     Access Resource
