@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -11,6 +12,9 @@ import Navigation from "@/components/Navigation";
 
 const Apply = () => {
   const [applicationsOpen, setApplicationsOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [bedroomPreference, setBedroomPreference] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleGoogleFormClick = () => {
@@ -18,6 +22,55 @@ const Apply = () => {
     window.open("https://applications.pentacoop.com/", "_blank");
   };
 
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !bedroomPreference) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in both email and bedroom preference",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // TODO: Replace with your Google Sheets endpoint
+      const response = await fetch('YOUR_GOOGLE_SHEETS_ENDPOINT', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          bedroomPreference,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Thank you!",
+          description: "You've been added to our mailing list",
+        });
+        setEmail("");
+        setBedroomPreference("");
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const toggleApplicationStatus = () => {
     setApplicationsOpen(!applicationsOpen);
@@ -136,24 +189,51 @@ const Apply = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 text-center">
-                  <h3 className="text-lg font-semibold mb-2">Get Notified</h3>
-                  <p className="text-gray-600 mb-4">
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-center">Get Notified</h3>
+                  <p className="text-gray-600 mb-6 text-center">
                     Join our mailing list to be the first to know when applications open again
                   </p>
                   
-                  <div className="text-center">
-                    <Button 
-                      onClick={() => window.open("https://mailinglist.pentacoop.com/", "_blank")}
-                      className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
-                    >
-                      <ExternalLink className="h-5 w-5 mr-2" />
-                      Subscribe for Updates
-                    </Button>
-                    <p className="text-sm text-gray-600 mt-2">
-                      Opens in a new tab
-                    </p>
-                  </div>
+                  <form onSubmit={handleEmailSubmit} className="space-y-4">
+                    <div>
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="your.email@example.com"
+                        required
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="bedroom-preference">Bedroom Preference</Label>
+                      <Select value={bedroomPreference} onValueChange={setBedroomPreference}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select your preference" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1-bedroom">1 Bedroom</SelectItem>
+                          <SelectItem value="2-bedroom">2 Bedroom</SelectItem>
+                          <SelectItem value="3-bedroom">3 Bedroom</SelectItem>
+                          <SelectItem value="any">Any Size</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    
+                    <div className="text-center pt-2">
+                      <Button 
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
+                      >
+                        <Mail className="h-5 w-5 mr-2" />
+                        {isSubmitting ? "Subscribing..." : "Subscribe for Updates"}
+                      </Button>
+                    </div>
+                  </form>
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
