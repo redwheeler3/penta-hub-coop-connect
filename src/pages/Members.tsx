@@ -94,7 +94,7 @@ const Members = () => {
             <div>
               <h3 className="font-semibold text-lg mb-2">Technical Assistance</h3>
               <p className="text-gray-600 mb-2">
-                For technical support with the website:
+                For technical support with the website, Google Drive, or Discord:
               </p>
               <p className="text-sm text-gray-500">Contact Jeff Oriecuia</p>
             </div>
