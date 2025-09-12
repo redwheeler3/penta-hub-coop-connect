@@ -131,28 +131,6 @@ const Apply = () => {
       emailInput.value = email;
       form.appendChild(emailInput);
       
-      // Add email receipt field
-      const emailReceiptInput = document.createElement('input');
-      emailReceiptInput.name = 'emailReceipt';
-      emailReceiptInput.value = 'true';
-      form.appendChild(emailReceiptInput);
-      
-      // Add required Google Forms hidden fields for email receipt to work
-      const dlutInput = document.createElement('input');
-      dlutInput.name = 'dlut';
-      dlutInput.value = Date.now().toString();
-      form.appendChild(dlutInput);
-      
-      const fvvInput = document.createElement('input');
-      fvvInput.name = 'fvv';
-      fvvInput.value = '1';
-      form.appendChild(fvvInput);
-      
-      const fbzxInput = document.createElement('input');
-      fbzxInput.name = 'fbzx';
-      fbzxInput.value = '-5575208004840975530';
-      form.appendChild(fbzxInput);
-      
       // Add each bedroom preference as a separate entry
       bedroomPreferences.forEach(pref => {
         const bedroomInput = document.createElement('input');
