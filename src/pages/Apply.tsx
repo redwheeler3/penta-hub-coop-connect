@@ -10,6 +10,9 @@ import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
+// Toggle this constant to control whether applications are open or closed
+const APPLICATIONS_OPEN = false;
+
 // Move EmailSignupForm outside to prevent re-creation on every render
 const EmailSignupForm = ({ 
   email, 
@@ -91,7 +94,6 @@ const EmailSignupForm = ({
 );
 
 const Apply = () => {
-  const [applicationsOpen, setApplicationsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -198,16 +200,6 @@ const Apply = () => {
     }
   };
 
-  const toggleApplicationStatus = () => {
-    setApplicationsOpen(!applicationsOpen);
-    toast({
-      title: applicationsOpen ? "Applications Closed" : "Applications Opened",
-      description: applicationsOpen 
-        ? "Now showing email signup form" 
-        : "Now redirecting to Google Form for applications",
-    });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <Navigation />
@@ -220,18 +212,7 @@ const Apply = () => {
           </p>
         </div>
 
-        {/* Demo toggle button for testing */}
-        <div className="text-center mb-8">
-          <Button 
-            onClick={toggleApplicationStatus}
-            variant="outline"
-            className="mb-4"
-          >
-            {applicationsOpen ? "Close Applications (Demo)" : "Open Applications (Demo)"}
-          </Button>
-        </div>
-
-        {applicationsOpen ? (
+        {APPLICATIONS_OPEN ? (
           // Applications are open - show Google Form option
           <div className="space-y-8">
             <Card className="bg-white shadow-lg">
