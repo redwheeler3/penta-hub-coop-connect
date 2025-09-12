@@ -13,7 +13,7 @@ import Navigation from "@/components/Navigation";
 const Apply = () => {
   const [applicationsOpen, setApplicationsOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const [bedroomPreference, setBedroomPreference] = useState("");
+  const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -26,10 +26,10 @@ const Apply = () => {
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !bedroomPreference) {
+    if (!email || bedroomPreferences.length === 0) {
       toast({
         title: "Missing Information",
-        description: "Please fill in both email and bedroom preference",
+        description: "Please fill in both email and bedroom preferences",
         variant: "destructive",
       });
       return;
@@ -46,7 +46,7 @@ const Apply = () => {
         },
         body: JSON.stringify({
           email,
-          bedroomPreference,
+          bedroomPreferences: bedroomPreferences.join(', '),
           timestamp: new Date().toISOString(),
         }),
       });
@@ -57,7 +57,7 @@ const Apply = () => {
           description: "You've been added to our mailing list",
         });
         setEmail("");
-        setBedroomPreference("");
+        setBedroomPreferences([]);
       } else {
         throw new Error('Failed to submit');
       }
@@ -69,6 +69,81 @@ const Apply = () => {
       });
     } finally {
       setIsSubmitting(false);
+    }
+  };
+  
+  const EmailSignupForm = () => (
+    <form onSubmit={handleEmailSubmit} className="space-y-4">
+      <div>
+        <Label htmlFor="email">Email Address</Label>
+        <Input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your.email@example.com"
+          required
+        />
+      </div>
+      
+      <div>
+        <Label>Bedroom Preferences</Label>
+        <div className="space-y-3 mt-2">
+          <div className="flex items-start space-x-3">
+            <Checkbox
+              id="1-bedroom"
+              checked={bedroomPreferences.includes("1-bedroom")}
+              onCheckedChange={(checked) => handleBedroomChange("1-bedroom", checked as boolean)}
+            />
+            <div className="flex-1">
+              <Label htmlFor="1-bedroom" className="font-medium">1 Bedroom</Label>
+              <p className="text-sm text-gray-600">For 1 adult or couple without children</p>
+            </div>
+          </div>
+          
+          <div className="flex items-start space-x-3">
+            <Checkbox
+              id="2-bedroom"
+              checked={bedroomPreferences.includes("2-bedroom")}
+              onCheckedChange={(checked) => handleBedroomChange("2-bedroom", checked as boolean)}
+            />
+            <div className="flex-1">
+              <Label htmlFor="2-bedroom" className="font-medium">2 Bedroom</Label>
+              <p className="text-sm text-gray-600">For 1-2 adults with 1+ children under 18</p>
+            </div>
+          </div>
+          
+          <div className="flex items-start space-x-3">
+            <Checkbox
+              id="3-bedroom"
+              checked={bedroomPreferences.includes("3-bedroom")}
+              onCheckedChange={(checked) => handleBedroomChange("3-bedroom", checked as boolean)}
+            />
+            <div className="flex-1">
+              <Label htmlFor="3-bedroom" className="font-medium">3 Bedroom</Label>
+              <p className="text-sm text-gray-600">For families with 2+ children or larger households</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="text-center pt-2">
+        <Button 
+          type="submit"
+          disabled={isSubmitting}
+          className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
+        >
+          <Mail className="h-5 w-5 mr-2" />
+          {isSubmitting ? "Subscribing..." : "Subscribe for Updates"}
+        </Button>
+      </div>
+    </form>
+  );
+  const handleBedroomChange = (bedroom: string, checked: boolean) => {
+    if (checked) {
+      setBedroomPreferences([...bedroomPreferences, bedroom]);
+    } else {
+      setBedroomPreferences(bedroomPreferences.filter(b => b !== bedroom));
     }
   };
 
@@ -159,18 +234,7 @@ const Apply = () => {
                     Join our mailing list to be notified when units matching your preferences become available
                   </p>
                   
-                  <div className="text-center">
-                    <Button 
-                      onClick={() => window.open("https://mailinglist.pentacoop.com/", "_blank")}
-                      className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
-                    >
-                      <ExternalLink className="h-5 w-5 mr-2" />
-                      Subscribe for Updates
-                    </Button>
-                    <p className="text-sm text-gray-600 mt-2">
-                      Opens in a new tab
-                    </p>
-                  </div>
+                  <EmailSignupForm />
                 </div>
               </CardContent>
             </Card>
@@ -195,45 +259,7 @@ const Apply = () => {
                     Join our mailing list to be the first to know when applications open again
                   </p>
                   
-                  <form onSubmit={handleEmailSubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="your.email@example.com"
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="bedroom-preference">Bedroom Preference</Label>
-                      <Select value={bedroomPreference} onValueChange={setBedroomPreference}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select your preference" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1-bedroom">1 Bedroom</SelectItem>
-                          <SelectItem value="2-bedroom">2 Bedroom</SelectItem>
-                          <SelectItem value="3-bedroom">3 Bedroom</SelectItem>
-                          <SelectItem value="any">Any Size</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="text-center pt-2">
-                      <Button 
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3"
-                      >
-                        <Mail className="h-5 w-5 mr-2" />
-                        {isSubmitting ? "Subscribing..." : "Subscribe for Updates"}
-                      </Button>
-                    </div>
-                  </form>
+                  <EmailSignupForm />
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
