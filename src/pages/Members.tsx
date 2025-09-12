@@ -7,31 +7,25 @@ import Navigation from "@/components/Navigation";
 const Members = () => {
   const memberResources = [
     {
-      title: "Bylaws & Policies",
-      description: "Access the co-op's bylaws, policies, and governing documents",
+      title: "File Repository",
+      description: "Access all co-op documents, bylaws, policies, and records",
       icon: FileText,
-      link: "https://drive.google.com/drive/folders/1O2zb24edHeVHKLkTu5lSM0MthMccnLPF?usp=drive_link",
+      links: [
+        { text: "Browse All Files", url: "https://files.pentacoop.com" },
+        { text: "Bylaws & Policies", url: "https://drive.google.com/drive/folders/1O2zb24edHeVHKLkTu5lSM0MthMccnLPF?usp=drive_link" },
+        { text: "Meeting Minutes", url: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link" },
+        { text: "Management Reports", url: "https://drive.google.com/drive/folders/16Bjujq-0VlEEJCqToI52RMbnJ5cuglc7?usp=drive_link" }
+      ],
       external: true
     },
     {
-      title: "Meeting Minutes",
-      description: "View minutes from board meetings and annual general meetings",
-      icon: FileText,
-      link: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link", 
-      external: true
-    },
-    {
-      title: "Management Reports",
-      description: "Reports provided by our management company",
-      icon: FileText,
-      link: "https://drive.google.com/drive/folders/16Bjujq-0VlEEJCqToI52RMbnJ5cuglc7?usp=drive_link",
-      external: true
-    },
-    {
-      title: "Maintenance",
-      description: "Guidelines for member maintenance responsibilities",
+      title: "Maintenance Support", 
+      description: "Guidelines for member maintenance responsibilities and communication",
       icon: Users,
-      link: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link",
+      links: [
+        { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
+        { text: "Maintenance Discord", url: "https://discord.com/channels/1415940719276855380/1416084892005171241" }
+      ],
       external: true
     },
     {
@@ -74,38 +68,23 @@ const Members = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                {resource.links ? (
-                  <div className="space-y-2">
-                    {resource.links.map((link, linkIndex) => (
-                      <Button 
-                        key={linkIndex}
-                        asChild 
-                        className="w-full bg-green-600 hover:bg-green-700"
-                      >
-                        <a 
-                          href={link.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          {link.text}
-                        </a>
-                      </Button>
-                    ))}
-                  </div>
-                ) : (
-                  <Button 
-                    asChild 
-                    className="w-full bg-green-600 hover:bg-green-700"
-                  >
-                    <a 
-                      href={resource.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                <div className="space-y-2">
+                  {resource.links.map((link, linkIndex) => (
+                    <Button 
+                      key={linkIndex}
+                      asChild 
+                      className="w-full bg-green-600 hover:bg-green-700"
                     >
-                      Access Resource
-                    </a>
-                  </Button>
-                )}
+                      <a 
+                        href={link.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        {link.text}
+                      </a>
+                    </Button>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}
