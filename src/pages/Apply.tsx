@@ -131,6 +131,12 @@ const Apply = () => {
       emailInput.value = email;
       form.appendChild(emailInput);
       
+      // Add email receipt field
+      const emailReceiptInput = document.createElement('input');
+      emailReceiptInput.name = 'emailReceipt';
+      emailReceiptInput.value = 'true';
+      form.appendChild(emailReceiptInput);
+      
       // Add each bedroom preference as a separate entry
       bedroomPreferences.forEach(pref => {
         const bedroomInput = document.createElement('input');
