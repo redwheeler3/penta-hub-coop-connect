@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Apply from "./pages/Apply";
 import Members from "./pages/Members";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 import { Routes, Route } from "react-router-dom"; // Keep only Routes/Route
 
 const queryClient = new QueryClient();
@@ -16,6 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
