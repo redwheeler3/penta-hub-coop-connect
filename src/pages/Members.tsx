@@ -20,7 +20,7 @@ const Members = () => {
     },
     {
       title: "Maintenance Support", 
-      description: "Guidelines and community discussion (sign up via Community Forum first)",
+      description: "Guidelines and reach out to the maintenance committee (sign up via Community Forum first)",
       icon: Users,
       links: [
         { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
