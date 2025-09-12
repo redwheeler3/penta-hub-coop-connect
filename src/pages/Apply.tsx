@@ -38,36 +38,74 @@ const Apply = () => {
     setIsSubmitting(true);
     
     try {
-      // TODO: Replace with your Google Sheets endpoint
-      const response = await fetch('YOUR_GOOGLE_SHEETS_ENDPOINT', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          bedroomPreferences: bedroomPreferences.join(', '),
-          timestamp: new Date().toISOString(),
-        }),
+      // Create a hidden form that submits to Google Forms
+      const form = document.createElement('form');
+      form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfvce57NjEBBI7qx3l7eYCsjAy3j4yMqZVnjbclGOfZ9uDFIw/formResponse';
+      form.method = 'POST';
+      form.target = 'hidden_iframe';
+      form.style.display = 'none';
+      
+      // Add email field
+      const emailInput = document.createElement('input');
+      emailInput.name = 'emailAddress';
+      emailInput.value = email;
+      form.appendChild(emailInput);
+      
+      // Add each bedroom preference as a separate entry
+      bedroomPreferences.forEach(pref => {
+        const bedroomInput = document.createElement('input');
+        bedroomInput.name = 'entry.2074227584';
+        
+        // Map our internal values to Google Form's exact strings
+        switch (pref) {
+          case '1-bedroom':
+            bedroomInput.value = '1 bedroom (1 or 2 adults)';
+            break;
+          case '2-bedroom':
+            bedroomInput.value = '2 bedroom (1 or 2 adults PLUS 1 or more children under 18)';
+            break;
+          case '3-bedroom':
+            bedroomInput.value = '3 bedroom (1 or 2 adults PLUS 2 or more children under 18)';
+            break;
+          default:
+            bedroomInput.value = pref;
+        }
+        
+        form.appendChild(bedroomInput);
       });
-
-      if (response.ok) {
+      
+      // Create hidden iframe if it doesn't exist
+      let iframe = document.getElementById('hidden_iframe') as HTMLIFrameElement;
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.id = 'hidden_iframe';
+        iframe.name = 'hidden_iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+      }
+      
+      // Add form to document and submit
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+      
+      // Show success message after a brief delay
+      setTimeout(() => {
         toast({
           title: "Thank you!",
           description: "You've been added to our mailing list",
         });
         setEmail("");
         setBedroomPreferences([]);
-      } else {
-        throw new Error('Failed to submit');
-      }
+        setIsSubmitting(false);
+      }, 1000);
+      
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to submit. Please try again.",
         variant: "destructive",
       });
-    } finally {
       setIsSubmitting(false);
     }
   };
