@@ -38,7 +38,7 @@ const Members = () => {
       title: "Community Forum",
       description: "Join discussions with other members on Discord",
       icon: MessageSquare,
-      link: "https://discord.gg/penta-coop",
+      link: "https://discord.gg/yJRGzyCT5B",
       external: true
     }
   ];
@@ -96,7 +96,7 @@ const Members = () => {
               <p className="text-gray-600 mb-2">
                 For technical support with the website:
               </p>
-              <p className="text-sm text-gray-500">Contact Jeff Oriecuia (members have contact details)</p>
+              <p className="text-sm text-gray-500">Contact Jeff Oriecuia</p>
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-2">Maintenance Issues</h3>
