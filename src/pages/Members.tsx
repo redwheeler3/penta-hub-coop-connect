@@ -20,11 +20,11 @@ const Members = () => {
     },
     {
       title: "Maintenance Support", 
-      description: "Guidelines for member maintenance responsibilities and communication",
+      description: "Guidelines and community discussion (sign up via Community Forum first)",
       icon: Users,
       links: [
         { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
-        { text: "Maintenance Discord", url: "https://discord.com/channels/1415940719276855380/1416084892005171241" }
+        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416084892005171241" }
       ],
       external: true
     },
