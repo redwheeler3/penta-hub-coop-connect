@@ -34,7 +34,7 @@ const Members = () => {
       icon: MessageSquare,
       links: [
         { text: "Sign Up", url: "https://discord.gg/yJRGzyCT5B" },
-        { text: "Access Resource", url: "https://discord.com/channels/1415940719276855380/1415940719813595220" }
+        { text: "Join Discussion", url: "https://discord.com/channels/1415940719276855380/1415940719813595220" }
       ],
       external: true
     }
