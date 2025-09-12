@@ -38,7 +38,10 @@ const Members = () => {
       title: "Community Forum",
       description: "Join discussions with other members on Discord",
       icon: MessageSquare,
-      link: "https://discord.gg/yJRGzyCT5B",
+      links: [
+        { text: "Sign Up", url: "https://discord.gg/yJRGzyCT5B" },
+        { text: "Access Resource", url: "https://discord.com/channels/1415940719276855380/1415940719813595220" }
+      ],
       external: true
     }
   ];
@@ -71,18 +74,38 @@ const Members = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button 
-                  asChild 
-                  className="w-full bg-green-600 hover:bg-green-700"
-                >
-                  <a 
-                    href={resource.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                {resource.links ? (
+                  <div className="space-y-2">
+                    {resource.links.map((link, linkIndex) => (
+                      <Button 
+                        key={linkIndex}
+                        asChild 
+                        className="w-full bg-green-600 hover:bg-green-700"
+                      >
+                        <a 
+                          href={link.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          {link.text}
+                        </a>
+                      </Button>
+                    ))}
+                  </div>
+                ) : (
+                  <Button 
+                    asChild 
+                    className="w-full bg-green-600 hover:bg-green-700"
                   >
-                    Access Resource
-                  </a>
-                </Button>
+                    <a 
+                      href={resource.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Access Resource
+                    </a>
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
