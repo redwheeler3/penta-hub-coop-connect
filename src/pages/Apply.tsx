@@ -88,41 +88,38 @@ const Apply = () => {
       
       <div>
         <Label>Bedroom Preferences</Label>
-        <div className="space-y-3 mt-2">
-          <div className="flex items-start space-x-3">
+        <div className="space-y-2 mt-2">
+          <div className="flex items-center space-x-3">
             <Checkbox
               id="1-bedroom"
               checked={bedroomPreferences.includes("1-bedroom")}
               onCheckedChange={(checked) => handleBedroomChange("1-bedroom", checked as boolean)}
             />
-            <div className="flex-1">
-              <Label htmlFor="1-bedroom" className="font-medium">1 Bedroom</Label>
-              <p className="text-sm text-gray-600">For 1 adult or couple without children</p>
-            </div>
+            <Label htmlFor="1-bedroom" className="font-normal">
+              1 bedroom - 1 or 2 adults
+            </Label>
           </div>
           
-          <div className="flex items-start space-x-3">
+          <div className="flex items-center space-x-3">
             <Checkbox
               id="2-bedroom"
               checked={bedroomPreferences.includes("2-bedroom")}
               onCheckedChange={(checked) => handleBedroomChange("2-bedroom", checked as boolean)}
             />
-            <div className="flex-1">
-              <Label htmlFor="2-bedroom" className="font-medium">2 Bedroom</Label>
-              <p className="text-sm text-gray-600">For 1-2 adults with 1+ children under 18</p>
-            </div>
+            <Label htmlFor="2-bedroom" className="font-normal">
+              2 bedroom - 1 or 2 adults PLUS 1 or more children under 18
+            </Label>
           </div>
           
-          <div className="flex items-start space-x-3">
+          <div className="flex items-center space-x-3">
             <Checkbox
               id="3-bedroom"
               checked={bedroomPreferences.includes("3-bedroom")}
               onCheckedChange={(checked) => handleBedroomChange("3-bedroom", checked as boolean)}
             />
-            <div className="flex-1">
-              <Label htmlFor="3-bedroom" className="font-medium">3 Bedroom</Label>
-              <p className="text-sm text-gray-600">For families with 2+ children or larger households</p>
-            </div>
+            <Label htmlFor="3-bedroom" className="font-normal">
+              3 bedroom - 1 or 2 adults PLUS 2 or more children under 18
+            </Label>
           </div>
         </div>
       </div>
