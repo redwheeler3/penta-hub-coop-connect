@@ -87,7 +87,7 @@ const Apply = () => {
       </div>
       
       <div>
-        <Label>Bedroom Preferences</Label>
+        <Label>Unit Preference</Label>
         <div className="space-y-2 mt-2">
           <div className="flex items-center space-x-3">
             <Checkbox
