@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
@@ -91,38 +92,43 @@ const Members = () => {
         </div>
 
         <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">TELUS Email Users: Access Google Drive</h2>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <h3 className="font-semibold text-lg mb-3 text-blue-800">Step-by-Step Instructions for TELUS Email (@telus.net) Users</h3>
-            <div className="space-y-3 text-sm text-blue-700">
-              <div>
-                <strong>Step 1:</strong> Go to <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">drive.google.com</a>
-              </div>
-              <div>
-                <strong>Step 2:</strong> Click "Sign in" and enter your full TELUS email address (including @telus.net)
-              </div>
-              <div>
-                <strong>Step 3:</strong> Use your TELUS email password (the same one you use for email)
-              </div>
-              <div>
-                <strong>Step 4:</strong> If prompted for two-factor authentication, check your TELUS email for the verification code
-              </div>
-              <div>
-                <strong>Step 5:</strong> Once signed in, you'll have access to Google Drive with your TELUS account
-              </div>
-              <div className="mt-3 p-3 bg-blue-100 rounded">
-                <strong>Important:</strong> TELUS email is powered by Google, so your @telus.net account IS a Google account. 
-                You don't need a separate @gmail.com account to access Google Drive.
-              </div>
-              <div className="mt-3">
-                <strong>Still having trouble?</strong> Try accessing your email first at <a href="https://email.telus.net" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">email.telus.net</a> to make sure your password is working.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Need Help?</h2>
+          
+          <Accordion type="single" collapsible className="mb-6">
+            <AccordionItem value="telus-help">
+              <AccordionTrigger className="text-left font-semibold">
+                TELUS Email Users: Accessing Google Drive Documents
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="space-y-3 text-sm text-blue-700">
+                    <div>
+                      <strong>Step 1:</strong> Click on any of the Google Drive links above (Bylaws & Policies, Meeting Minutes, etc.)
+                    </div>
+                    <div>
+                      <strong>Step 2:</strong> If you're signed into Google with your TELUS email, you may see an access denied message
+                    </div>
+                    <div>
+                      <strong>Step 3:</strong> Look for a "Switch account" option or click on your profile picture in the top right
+                    </div>
+                    <div>
+                      <strong>Step 4:</strong> Sign out of your TELUS email account and sign in with a personal Google account (@gmail.com)
+                    </div>
+                    <div>
+                      <strong>Step 5:</strong> Try accessing the Google Drive links again with your personal Google account
+                    </div>
+                    <div className="mt-3 p-3 bg-blue-100 rounded">
+                      <strong>Note:</strong> TELUS email accounts have limited access to shared Google Drive folders. 
+                      You'll need a regular Google/Gmail account to view the co-op documents.
+                    </div>
+                    <div className="mt-3">
+                      <strong>Don't have a Google account?</strong> You can create one for free at <a href="https://accounts.google.com/signup" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">accounts.google.com</a>
+                    </div>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h3 className="font-semibold text-lg mb-2">Technical Assistance</h3>
