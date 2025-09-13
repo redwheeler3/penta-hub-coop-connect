@@ -31,7 +31,7 @@ const Members = () => {
     },
     {
       title: "Maintenance", 
-      description: "Guidelines and communication with the maintenance committee",
+      description: "Read guidelines and communicate with the maintenance committee",
       icon: Users,
       links: [
         { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
