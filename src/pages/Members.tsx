@@ -111,26 +111,29 @@ const Members = () => {
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                       <div className="space-y-2 text-sm text-blue-700">
                         <div>
-                          <strong>Step 1:</strong> Click on any of the File Repository links above (Bylaws & Policies, Meeting Minutes, etc.)
+                          <strong>Step 1:</strong> Go to <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">mail.google.com</a> (your TELUS email)
                         </div>
                         <div>
-                          <strong>Step 2:</strong> If you're signed into Google with your TELUS email, you may see an access denied message
+                          <strong>Step 2:</strong> Click your profile picture in the top right corner
                         </div>
                         <div>
-                          <strong>Step 3:</strong> Look for a "Switch account" option or click on your profile picture in the top right
+                          <strong>Step 3:</strong> If you have a personal Gmail account, select it from the list
                         </div>
                         <div>
-                          <strong>Step 4:</strong> Sign out of your TELUS email account and sign in with a personal Google account (@gmail.com)
+                          <strong>Step 4:</strong> If you don't see a personal account, click "Add another account"
                         </div>
                         <div>
-                          <strong>Step 5:</strong> Try accessing the File Repository links again with your personal Google account
+                          <strong>Step 5:</strong> On the "Choose an account" screen, select "Use another account"
+                        </div>
+                        <div>
+                          <strong>Step 6:</strong> Either sign in with your existing personal Gmail or click "Create account" for a new one
+                        </div>
+                        <div>
+                          <strong>Step 7:</strong> Once signed in with your personal account, try accessing the File Repository links again
                         </div>
                         <div className="mt-2 p-2 bg-blue-100 rounded text-xs">
-                          <strong>Note:</strong> TELUS email accounts have limited access to shared File Repository folders. 
-                          You'll need a regular Google/Gmail account to view the co-op documents.
-                        </div>
-                        <div className="mt-2 text-xs">
-                          <strong>Don't have a Google account?</strong> You can create one for free at <a href="https://accounts.google.com/signup" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">accounts.google.com</a>
+                          <strong>Note:</strong> TELUS email accounts have restricted access to external shared folders. 
+                          A personal Google/Gmail account is required to view the co-op documents.
                         </div>
                       </div>
                     </div>
