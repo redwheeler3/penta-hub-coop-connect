@@ -94,48 +94,49 @@ const Members = () => {
         <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Need Help?</h2>
           
-          <Accordion type="single" collapsible className="mb-6">
-            <AccordionItem value="telus-help">
-              <AccordionTrigger className="text-left font-semibold">
-                TELUS Email Users: Accessing Google Drive Documents
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <div className="space-y-3 text-sm text-blue-700">
-                    <div>
-                      <strong>Step 1:</strong> Click on any of the Google Drive links above (Bylaws & Policies, Meeting Minutes, etc.)
-                    </div>
-                    <div>
-                      <strong>Step 2:</strong> If you're signed into Google with your TELUS email, you may see an access denied message
-                    </div>
-                    <div>
-                      <strong>Step 3:</strong> Look for a "Switch account" option or click on your profile picture in the top right
-                    </div>
-                    <div>
-                      <strong>Step 4:</strong> Sign out of your TELUS email account and sign in with a personal Google account (@gmail.com)
-                    </div>
-                    <div>
-                      <strong>Step 5:</strong> Try accessing the Google Drive links again with your personal Google account
-                    </div>
-                    <div className="mt-3 p-3 bg-blue-100 rounded">
-                      <strong>Note:</strong> TELUS email accounts have limited access to shared Google Drive folders. 
-                      You'll need a regular Google/Gmail account to view the co-op documents.
-                    </div>
-                    <div className="mt-3">
-                      <strong>Don't have a Google account?</strong> You can create one for free at <a href="https://accounts.google.com/signup" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">accounts.google.com</a>
-                    </div>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h3 className="font-semibold text-lg mb-2">Technical Assistance</h3>
               <p className="text-gray-600 mb-2">
                 For technical support with the website, Google Drive, or Discord:
               </p>
-              <p className="text-sm"><strong>Email:</strong> <a href="mailto:techsupport@pentacoop.com" className="text-green-600 hover:underline">techsupport@pentacoop.com</a></p>
+              <p className="text-sm mb-4"><strong>Email:</strong> <a href="mailto:techsupport@pentacoop.com" className="text-green-600 hover:underline">techsupport@pentacoop.com</a></p>
+              
+              <Accordion type="single" collapsible className="mb-4">
+                <AccordionItem value="telus-help">
+                  <AccordionTrigger className="text-left font-medium text-sm">
+                    TELUS Email Users: Accessing Google Drive Documents
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                      <div className="space-y-2 text-sm text-blue-700">
+                        <div>
+                          <strong>Step 1:</strong> Click on any of the Google Drive links above (Bylaws & Policies, Meeting Minutes, etc.)
+                        </div>
+                        <div>
+                          <strong>Step 2:</strong> If you're signed into Google with your TELUS email, you may see an access denied message
+                        </div>
+                        <div>
+                          <strong>Step 3:</strong> Look for a "Switch account" option or click on your profile picture in the top right
+                        </div>
+                        <div>
+                          <strong>Step 4:</strong> Sign out of your TELUS email account and sign in with a personal Google account (@gmail.com)
+                        </div>
+                        <div>
+                          <strong>Step 5:</strong> Try accessing the Google Drive links again with your personal Google account
+                        </div>
+                        <div className="mt-2 p-2 bg-blue-100 rounded text-xs">
+                          <strong>Note:</strong> TELUS email accounts have limited access to shared Google Drive folders. 
+                          You'll need a regular Google/Gmail account to view the co-op documents.
+                        </div>
+                        <div className="mt-2 text-xs">
+                          <strong>Don't have a Google account?</strong> You can create one for free at <a href="https://accounts.google.com/signup" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">accounts.google.com</a>
+                        </div>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-2">Maintenance Issues</h3>
