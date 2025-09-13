@@ -6,7 +6,6 @@ import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
 const Members = () => {
-  console.log("Members component rendering");
   const memberResources = [
     {
       title: "File Repository",
