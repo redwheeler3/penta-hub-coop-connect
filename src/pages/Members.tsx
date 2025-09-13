@@ -111,7 +111,7 @@ const Members = () => {
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                       <div className="space-y-2 text-sm text-blue-700">
                         <div className="mb-3 p-2 bg-blue-100 rounded text-xs">
-                          <strong>Follow these steps if you have a TELUS email account AND get an "access denied" message when trying to view File Repository documents.</strong>
+                          <strong>Follow these steps if you have a TELUS email account and get an "access denied" message when trying to view File Repository documents.</strong>
                         </div>
                         <div>
                           <strong>Step 1:</strong> Go to <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">mail.google.com</a> (your TELUS email)
