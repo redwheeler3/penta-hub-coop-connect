@@ -35,7 +35,7 @@ const Members = () => {
       icon: Users,
       links: [
         { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
-        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416084892005171241" }
+        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416571930835681384" }
       ],
       external: true
     }
