@@ -20,22 +20,22 @@ const Members = () => {
       external: true
     },
     {
-      title: "Maintenance", 
-      description: "Guidelines and communication with the maintenance committee (sign up via Community Forum first)",
-      icon: Users,
-      links: [
-        { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
-        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416084892005171241" }
-      ],
-      external: true
-    },
-    {
       title: "Community Forum",
       description: "Join discussions with other members on Discord",
       icon: MessageSquare,
       links: [
         { text: "Sign Up", url: "https://discord.gg/yJRGzyCT5B" },
         { text: "Join Discussion", url: "https://discord.com/channels/1415940719276855380/1415940719813595220" }
+      ],
+      external: true
+    },
+    {
+      title: "Maintenance", 
+      description: "Guidelines and communication with the maintenance committee",
+      icon: Users,
+      links: [
+        { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
+        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416084892005171241" }
       ],
       external: true
     }
@@ -55,7 +55,7 @@ const Members = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {memberResources.map((resource, index) => (
-            <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+            <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col">
               <CardHeader>
                 <div className="flex items-center mb-2">
                   <resource.icon className="h-6 w-6 text-green-600 mr-3" />
@@ -68,7 +68,7 @@ const Members = () => {
                   {resource.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-1 flex flex-col justify-end">
                 <div className="space-y-2">
                   {resource.links.map((link, linkIndex) => (
                     <Button 
