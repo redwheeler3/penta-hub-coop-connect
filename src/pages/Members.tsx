@@ -110,6 +110,9 @@ const Members = () => {
                   <AccordionContent>
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                       <div className="space-y-2 text-sm text-blue-700">
+                        <div className="mb-3 p-2 bg-blue-100 rounded text-xs">
+                          <strong>Follow these steps if you get an "access denied" message when trying to view File Repository documents.</strong>
+                        </div>
                         <div>
                           <strong>Step 1:</strong> Go to <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">mail.google.com</a> (your TELUS email)
                         </div>
@@ -126,7 +129,7 @@ const Members = () => {
                           <strong>Step 5:</strong> On the "Choose an account" screen, select "Use another account"
                         </div>
                         <div>
-                          <strong>Step 6:</strong> Either sign in with your existing personal Gmail or click "Create account" for a new one
+                          <strong>Step 6:</strong> Click "Create account" to make a new personal Gmail account
                         </div>
                         <div>
                           <strong>Step 7:</strong> Once signed in with your personal account, try accessing the File Repository links again
