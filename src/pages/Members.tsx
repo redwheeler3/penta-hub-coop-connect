@@ -68,7 +68,7 @@ const Members = () => {
                   {resource.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex-1 flex flex-col justify-end">
+              <CardContent className="flex-1 flex flex-col">
                 <div className="space-y-2">
                   {resource.links.map((link, linkIndex) => (
                     <Button 
