@@ -49,8 +49,8 @@ const About = () => {
                     <div className="text-sm text-gray-600">Established</div>
                   </div>
                   <div className="bg-green-50 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-green-600">46</div>
-                    <div className="text-sm text-gray-600">Years Strong</div>
+                    <div className="text-2xl font-bold text-green-600">22</div>
+                    <div className="text-sm text-gray-600">Families</div>
                   </div>
                 </div>
                 
