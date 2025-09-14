@@ -113,7 +113,7 @@ const About = () => {
                   <h3 className="text-xl font-semibold text-gray-900">Near Jericho Beach</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Penta Housing Co-Op is nestled in Vancouver's Point Grey neighborhood, 
+                  Penta Housing Co-Op is nestled in Vancouver's vibrant Point Grey neighborhood, 
                   just steps away from the beautiful Jericho Beach. This prime location offers 
                   residents the perfect blend of urban convenience and natural tranquility.
                 </p>
