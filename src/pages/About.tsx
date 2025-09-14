@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mountain, Waves, Shield } from "lucide-react";
+import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mountain, Waves, Shield, HandHeart } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
@@ -95,6 +95,13 @@ const About = () => {
                     <div>
                       <h4 className="font-semibold">Inclusive Community</h4>
                       <p className="text-sm text-gray-600">We welcome diverse families and foster an environment where everyone belongs</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <HandHeart className="h-5 w-5 text-green-600 mr-3 mt-1" />
+                    <div>
+                      <h4 className="font-semibold">Mutual Support</h4>
+                      <p className="text-sm text-gray-600">Members help each other through shared responsibilities and community care</p>
                     </div>
                   </div>
                 </CardContent>
