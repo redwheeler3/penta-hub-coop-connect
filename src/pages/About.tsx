@@ -27,18 +27,19 @@ const About = () => {
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Our Story</h3>
                 <p className="text-gray-600 mb-4">
-                  Penta Housing Co-Op was established in the 1970s with a vision to create an inclusive, sustainable 
-                  community where residents share resources, responsibilities, and experiences. After years of planning 
-                  and community building, our cooperative welcomed its first residents in September 1978.
-                </p>
-                <p className="text-gray-600 mb-4">
-                  The journey began in 1974 when a group of dedicated individuals incorporated the Penta Co-operative 
-                  Housing Association. Through determination and community spirit, they overcame initial setbacks, 
+                  Penta Housing Co-Op began in 1974 when a group of dedicated individuals incorporated the 
+                  Penta Co-operative Housing Association with a vision to create an inclusive, sustainable 
+                  community. Through determination and community spirit, they overcame initial setbacks, 
                   including a rejected rezoning application, to eventually secure and develop our current site.
                 </p>
+                <p className="text-gray-600 mb-4">
+                  After years of planning and community building, our cooperative welcomed its first 
+                  residents in September 1978. Today, 22 families call Penta home, continuing that legacy 
+                  of cooperation, environmental stewardship, and mutual support.
+                </p>
                 <p className="text-gray-600 mb-6">
-                  Today, we continue that legacy of cooperation, environmental stewardship, and mutual support. 
-                  Our residents come from diverse backgrounds but share common values that make our community thrive.
+                  Our residents come from diverse backgrounds but share common values of community, 
+                  sustainability, and affordable housing that make our cooperative thrive.
                 </p>
                 
                 {/* Statistics */}
