@@ -86,6 +86,11 @@ const Members = () => {
                     </Button>
                   ))}
                 </div>
+                {resource.title === "Maintenance" && (
+                  <div className="mt-3 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-700">
+                    <strong>Note:</strong> You must sign up for the Community Forum first before accessing the Maintenance Forum.
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
