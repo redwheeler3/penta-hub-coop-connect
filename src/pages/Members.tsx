@@ -103,7 +103,7 @@ const Members = () => {
             <div>
               <h3 className="font-semibold text-lg mb-2">Technical Assistance</h3>
               <p className="text-gray-600 mb-2">
-                Contact for access requests to Google Drive or Discord, and technical support with the website, Google Drive, or Discord:
+                Contact for access requests to Google Drive or Discord, and website, Google Drive, or Discord technical support:
               </p>
               <p className="text-sm mb-4"><strong>Email:</strong> <a href="mailto:techsupport@pentacoop.com" className="text-green-600 hover:underline">techsupport@pentacoop.com</a></p>
               
