@@ -215,7 +215,7 @@ const Apply = () => {
         {APPLICATIONS_OPEN ? (
           // Applications are open - show Google Form option
           <div className="space-y-8">
-            <Card className="bg-white shadow-lg border-l-4 border-l-green-600">
+            <Card className="bg-white shadow-lg">
               <CardHeader className="text-center">
                 <div className="flex items-center justify-center mb-4">
                   <CheckCircle className="h-12 w-12 text-green-600" />
@@ -281,7 +281,7 @@ const Apply = () => {
         ) : (
           // Applications are closed - show email signup
           <div className="space-y-8">
-            <Card className="bg-white shadow-lg border-l-4 border-l-green-600">
+            <Card className="bg-white shadow-lg">
               <CardHeader className="text-center">
                 <div className="flex items-center justify-center mb-4">
                   <Clock className="h-12 w-12 text-orange-500" />
