@@ -61,7 +61,7 @@ const About = () => {
                 </Link>
               </div>
               
-              <Card className="bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg border-green-100">
+              <Card className="bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg border-green-100 border-l-4 border-l-green-600">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Heart className="h-6 w-6 text-green-600 mr-2" />
@@ -151,35 +151,35 @@ const About = () => {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Neighborhood Highlights</h3>
                 <div className="space-y-3">
-                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm border-l-4 border-l-green-600">
                     <Waves className="h-5 w-5 text-blue-600 mr-3 mt-1" />
                     <div>
                       <span className="font-medium">Beach Access</span>
                       <p className="text-sm text-gray-600">Walking distance to Jericho Beach</p>
                     </div>
                   </div>
-                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm border-l-4 border-l-green-600">
                     <Train className="h-5 w-5 text-blue-600 mr-3 mt-1" />
                     <div>
                       <span className="font-medium">Transit</span>
                       <p className="text-sm text-gray-600">Close to UBC campus and transit connections</p>
                     </div>
                   </div>
-                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm border-l-4 border-l-green-600">
                     <Leaf className="h-5 w-5 text-blue-600 mr-3 mt-1" />
                     <div>
                       <span className="font-medium">Recreation</span>
                       <p className="text-sm text-gray-600">Access to parks, trails, and recreational facilities</p>
                     </div>
                   </div>
-                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm border-l-4 border-l-green-600">
                     <ShoppingBag className="h-5 w-5 text-blue-600 mr-3 mt-1" />
                     <div>
                       <span className="font-medium">Shopping</span>
                       <p className="text-sm text-gray-600">Nearby shopping at West 4th Avenue and Broadway</p>
                     </div>
                   </div>
-                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                  <div className="flex items-start bg-white rounded-lg p-3 shadow-sm border-l-4 border-l-green-600">
                     <GraduationCap className="h-5 w-5 text-blue-600 mr-3 mt-1" />
                     <div>
                       <span className="font-medium">Schools</span>
