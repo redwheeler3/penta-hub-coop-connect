@@ -74,7 +74,7 @@ const Index = () => {
             Why Choose Penta Housing Co-Op?
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="border-l-4 border-l-green-600">
               <CardHeader>
                 <Users className="h-12 w-12 text-green-600 mb-4" />
                 <CardTitle>Community Living</CardTitle>
@@ -84,7 +84,7 @@ const Index = () => {
               </CardHeader>
             </Card>
             
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="border-l-4 border-l-green-600">
               <CardHeader>
                 <Home className="h-12 w-12 text-green-600 mb-4" />
                 <CardTitle>Affordable Housing</CardTitle>
@@ -94,7 +94,7 @@ const Index = () => {
               </CardHeader>
             </Card>
             
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="border-l-4 border-l-green-600">
               <CardHeader>
                 <FileText className="h-12 w-12 text-green-600 mb-4" />
                 <CardTitle>Shared Resources</CardTitle>
