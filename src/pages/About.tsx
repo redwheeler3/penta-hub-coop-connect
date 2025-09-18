@@ -239,7 +239,7 @@ const About = () => {
             <div className="border-t pt-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">Learn More About Co-op Housing</h3>
               <p className="text-gray-600 mb-6 text-center max-w-2xl mx-auto">
-                For more information about co-op housing in British Columbia and across Canada, 
+                For more information about cooperative housing in British Columbia and across Canada, 
                 visit these valuable resources:
               </p>
               <div className="flex flex-wrap justify-center gap-4">
@@ -249,7 +249,7 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
                 >
-                  CHFBC
+                  Co-op Housing Federation of BC
                 </a>
                 <a 
                   href="https://chfcanada.coop" 
@@ -257,7 +257,7 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
                 >
-                  CHFC
+                  Co-op Housing Federation of Canada
                 </a>
               </div>
             </div>
