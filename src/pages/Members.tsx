@@ -25,8 +25,8 @@ const Members = () => {
       description: "Join discussions with other members on Discord",
       icon: MessageSquare,
       links: [
-        { text: "Sign Up", url: "https://discord.gg/yJRGzyCT5B" },
-        { text: "Join Discussion", url: "https://discord.com/channels/1415940719276855380/1415940719813595220" }
+        { text: "Sign Up", url: "https://discord.gg/yJRGzyCT5B", beta: true },
+        { text: "Join Discussion", url: "https://discord.com/channels/1415940719276855380/1415940719813595220", beta: true }
       ],
       external: true
     },
