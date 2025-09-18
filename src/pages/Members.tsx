@@ -101,7 +101,7 @@ const Members = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold text-lg mb-2">Technical Assistance</h3>
+              <h3 className="font-semibold text-lg mb-2">Member Technical Assistance</h3>
               <p className="text-gray-600 mb-2">
                 Contact for access requests to Google Drive or Discord, and website, Google Drive, or Discord technical support:
               </p>
@@ -150,7 +150,7 @@ const Members = () => {
               </Accordion>
             </div>
             <div>
-              <h3 className="font-semibold text-lg mb-2">Maintenance Issues</h3>
+              <h3 className="font-semibold text-lg mb-2">Member Maintenance Issues</h3>
               <div className="mb-4">
                 <h4 className="font-medium text-green-700 mb-1">
                   <a href="https://www.tpmmanagement.ca" target="_blank" rel="noopener noreferrer" className="text-green-700 hover:text-green-800 hover:underline">
