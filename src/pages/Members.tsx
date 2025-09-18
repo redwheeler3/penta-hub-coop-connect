@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
@@ -35,7 +36,7 @@ const Members = () => {
       icon: Users,
       links: [
         { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
-        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416571930835681384" }
+        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416571930835681384", beta: true }
       ],
       external: true
     }
@@ -80,8 +81,14 @@ const Members = () => {
                         href={link.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
                       >
                         {link.text}
+                        {link.beta && (
+                          <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700 hover:bg-blue-100">
+                            BETA
+                          </Badge>
+                        )}
                       </a>
                     </Button>
                   ))}
