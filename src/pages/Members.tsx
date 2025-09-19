@@ -15,8 +15,9 @@ const Members = () => {
       links: [
         { text: "Browse All Files", url: "https://files.pentacoop.com" },
         { text: "Bylaws & Policies", url: "https://drive.google.com/drive/folders/1O2zb24edHeVHKLkTu5lSM0MthMccnLPF?usp=drive_link" },
-        { text: "Meeting Minutes", url: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link" },
-        { text: "Management Reports", url: "https://drive.google.com/drive/folders/16Bjujq-0VlEEJCqToI52RMbnJ5cuglc7?usp=drive_link" }
+        { text: "Complaint Form", url: "https://docs.google.com/document/d/1D1cubBrqwal2Ok4t7aCH3Yiw-n25R8Mh/edit" },
+        { text: "Management Reports", url: "https://drive.google.com/drive/folders/16Bjujq-0VlEEJCqToI52RMbnJ5cuglc7?usp=drive_link" },
+        { text: "Meeting Minutes", url: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link" }
       ],
       external: true
     },
