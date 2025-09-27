@@ -46,7 +46,7 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@tanstack/react-query": "^5.56.2",
     "bun": "^1.2.21",
-    "caniuse-lite": "^1.0.30001741",
+    "caniuse-lite": "^1.0.30001745",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
