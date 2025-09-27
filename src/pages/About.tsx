@@ -121,7 +121,7 @@ const About = () => {
                   <h3 className="text-xl font-semibold text-gray-900">Near Jericho Beach</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Penta Housing Co-Op is nestled in Vancouver's peaceful Point Grey neighborhood, 
+                  Penta Housing Co-Op is nestled in Vancouver's peaceful Point Grey neighbourhood, 
                   just steps away from the beautiful Jericho Beach. This prime location offers 
                   residents the perfect blend of urban convenience and natural tranquility.
                 </p>
@@ -137,7 +137,7 @@ const About = () => {
                 </div>
                 <div className="flex items-center text-gray-600 mb-6">
                   <Mountain className="h-5 w-5 text-blue-500 mr-2" />
-                  <span className="text-sm">Stunning views of mountains and ocean from the neighborhood</span>
+                  <span className="text-sm">Stunning views of mountains and ocean from the neighbourhood</span>
                 </div>
                 <a 
                   href="https://govancity.com/neighbourhoods/point-grey/" 
@@ -145,11 +145,11 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hover-scale shadow-md text-sm"
                 >
-                  Explore Point Grey Neighborhood Guide
+                  Explore Point Grey Neighbourhood Guide
                 </a>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Neighborhood Highlights</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Neighbourhood Highlights</h3>
                 <div className="space-y-3">
                   <div className="flex items-start bg-white rounded-lg p-3 shadow-sm">
                     <Waves className="h-5 w-5 text-blue-600 mr-3 mt-1" />

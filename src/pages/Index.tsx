@@ -24,7 +24,7 @@ const Index = () => {
             Welcome to Penta Housing Co-Op
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            A vibrant community where neighbors become family. Experience cooperative living 
+            A vibrant community where neighbours become family. Experience cooperative living 
             that combines affordability, sustainability, and genuine connection.
           </p>
           <div className="flex justify-center space-x-4">
@@ -79,7 +79,7 @@ const Index = () => {
                 <Users className="h-12 w-12 text-green-600 mb-4" />
                 <CardTitle>Community Living</CardTitle>
                 <CardDescription>
-                  Build lasting friendships and share experiences with like-minded neighbors in our family-friendly environment
+                  Build lasting friendships and share experiences with like-minded neighbours in our family-friendly environment
                 </CardDescription>
               </CardHeader>
             </Card>
