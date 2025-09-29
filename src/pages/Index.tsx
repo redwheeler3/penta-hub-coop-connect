@@ -151,6 +151,23 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Footer Credit */}
+      <footer className="py-4 px-4 bg-gray-100">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-xs text-gray-500">
+            Website designed by{" "}
+            <a 
+              href="https://www.jeffo.net" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-700 transition-colors"
+            >
+              Jeff Oriecuia
+            </a>
+          </p>
+        </div>
+      </footer>
+
     </div>
   );
 };
