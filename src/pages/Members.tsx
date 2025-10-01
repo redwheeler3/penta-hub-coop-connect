@@ -133,7 +133,17 @@ const Members = () => {
               
               <Accordion type="single" collapsible className="mb-4">
                 <AccordionItem value="telus-help">
-                  <AccordionTrigger className="text-left font-medium text-sm">
+                  <AccordionTrigger 
+                    className="text-left font-medium text-sm"
+                    onClick={() => {
+                      if (typeof window.gtag !== 'undefined') {
+                        window.gtag('event', 'accordion_click', {
+                          accordion_name: 'TELUS Email Help',
+                          page_location: 'members_page',
+                        });
+                      }
+                    }}
+                  >
                     TELUS Email Users: Accessing File Repository Documents
                   </AccordionTrigger>
                   <AccordionContent>
