@@ -15,7 +15,7 @@ const Index = () => {
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'cta_click', {
         button_name: buttonName,
-        page_location: location,
+        button_location: location,
       });
     }
   };
