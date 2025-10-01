@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mountain, Waves, Shield, HandHeart } from "lucide-react";
@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const About = () => {
+  useEffect(() => {
+    document.title = "About - Penta Housing Co-Op";
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <Navigation />

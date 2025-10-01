@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, FileText } from "lucide-react";
@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "Home - Penta Housing Co-Op";
+  }, []);
   const BASE_URL = import.meta.env.BASE_URL;
 
   return (

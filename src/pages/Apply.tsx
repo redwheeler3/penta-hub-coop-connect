@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -98,6 +98,10 @@ const Apply = () => {
   const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    document.title = "Apply - Penta Housing Co-Op";
+  }, []);
 
   const handleGoogleFormClick = () => {
     // Open Google Form in new tab

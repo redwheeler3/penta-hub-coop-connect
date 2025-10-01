@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -7,6 +7,9 @@ import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
 const Members = () => {
+  useEffect(() => {
+    document.title = "Members - Penta Housing Co-Op";
+  }, []);
   const memberResources = [
     {
       title: "File Repository",
