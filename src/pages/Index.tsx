@@ -11,6 +11,15 @@ const Index = () => {
   }, []);
   const BASE_URL = import.meta.env.BASE_URL;
 
+  const trackCTA = (buttonName: string, location: string) => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'cta_click', {
+        button_name: buttonName,
+        page_location: location,
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <Navigation />
@@ -31,12 +40,12 @@ const Index = () => {
             that combines affordability, sustainability, and genuine connection.
           </p>
           <div className="flex justify-center space-x-4">
-            <Link to="/about">
+            <Link to="/about" onClick={() => trackCTA('Learn More', 'hero')}>
               <Button size="lg" className="bg-green-600 hover:bg-green-700">
                 Learn More
               </Button>
             </Link>
-            <Link to="/apply">
+            <Link to="/apply" onClick={() => trackCTA('Apply Now', 'hero')}>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 bg-transparent">
                 Apply Now
               </Button>
@@ -146,7 +155,7 @@ const Index = () => {
           <p className="text-lg text-green-100 mb-6">
             Take the first step toward cooperative living and become part of our vibrant community.
           </p>
-          <Link to="/apply">
+          <Link to="/apply" onClick={() => trackCTA('Start Your Application', 'bottom_cta')}>
             <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
               Start Your Application
             </Button>
@@ -164,6 +173,14 @@ const Index = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-gray-700 transition-colors"
+              onClick={() => {
+                if (typeof window.gtag !== 'undefined') {
+                  window.gtag('event', 'external_link_click', {
+                    link_name: 'Designer Website',
+                    link_url: 'https://www.jeffo.net'
+                  });
+                }
+              }}
             >
               Jeff Oriecuia
             </a>

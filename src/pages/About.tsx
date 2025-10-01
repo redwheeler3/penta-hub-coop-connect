@@ -9,6 +9,25 @@ const About = () => {
   useEffect(() => {
     document.title = "About - Penta Housing Co-Op";
   }, []);
+
+  const trackCTA = (buttonName: string) => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'cta_click', {
+        button_name: buttonName,
+        page_location: 'about_page',
+      });
+    }
+  };
+
+  const trackExternalLink = (linkName: string, linkUrl: string) => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'external_link_click', {
+        link_name: linkName,
+        link_url: linkUrl,
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <Navigation />
@@ -57,7 +76,7 @@ const About = () => {
                   </div>
                 </div>
                 
-                <Link to="/apply">
+                <Link to="/apply" onClick={() => trackCTA('Join Our Community')}>
                   <Button className="bg-green-600 hover:bg-green-700 hover-scale">
                     Join Our Community
                   </Button>
@@ -147,6 +166,7 @@ const About = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hover-scale shadow-md text-sm"
+                  onClick={() => trackExternalLink('Point Grey Guide', 'https://govancity.com/neighbourhoods/point-grey/')}
                 >
                   Explore Point Grey Neighbourhood Guide
                 </a>
@@ -251,6 +271,7 @@ const About = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
+                  onClick={() => trackExternalLink('CHF BC', 'https://www.chf.bc.ca')}
                 >
                   Co-op Housing Federation of BC
                 </a>
@@ -259,6 +280,7 @@ const About = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
+                  onClick={() => trackExternalLink('CHF Canada', 'https://chfcanada.coop')}
                 >
                   Co-op Housing Federation of Canada
                 </a>

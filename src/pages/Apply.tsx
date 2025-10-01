@@ -39,6 +39,14 @@ const EmailSignupForm = ({
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your.email@example.com"
         required
+        onFocus={() => {
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'form_start', {
+              form_name: 'Email Signup',
+              form_location: 'apply_page',
+            });
+          }
+        }}
       />
     </div>
     
@@ -104,7 +112,12 @@ const Apply = () => {
   }, []);
 
   const handleGoogleFormClick = () => {
-    // Open Google Form in new tab
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'cta_click', {
+        button_name: 'Complete Application Form',
+        page_location: 'apply_page',
+      });
+    }
     window.open("https://applications.pentacoop.com/", "_blank");
   };
 
@@ -122,6 +135,14 @@ const Apply = () => {
     }
 
     setIsSubmitting(true);
+
+    // Track form submission
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'form_submit', {
+        form_name: 'Email Signup',
+        form_location: 'apply_page',
+      });
+    }
     
     try {
       // Create a hidden form that submits to Google Forms

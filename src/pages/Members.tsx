@@ -10,6 +10,17 @@ const Members = () => {
   useEffect(() => {
     document.title = "Members - Penta Housing Co-Op";
   }, []);
+
+  const trackResourceClick = (resourceName: string, linkName: string) => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'resource_link_click', {
+        resource_category: resourceName,
+        link_name: linkName,
+        page_location: 'members_page',
+      });
+    }
+  };
+
   const memberResources = [
     {
       title: "File Repository",
@@ -87,6 +98,7 @@ const Members = () => {
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2"
+                        onClick={() => trackResourceClick(resource.title, link.text)}
                       >
                         {link.text}
                         {link.beta && (
