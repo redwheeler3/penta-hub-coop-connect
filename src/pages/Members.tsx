@@ -16,7 +16,6 @@ const Members = () => {
       window.gtag('event', 'resource_link_click', {
         resource_category: resourceName,
         link_name: linkName,
-        page_location: 'members_page',
       });
     }
   };
@@ -139,7 +138,6 @@ const Members = () => {
                       if (typeof window.gtag !== 'undefined') {
                         window.gtag('event', 'accordion_click', {
                           accordion_name: 'TELUS Email Help',
-                          page_location: 'members_page',
                         });
                       }
                     }}
