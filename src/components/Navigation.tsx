@@ -12,6 +12,8 @@ const Navigation = () => {
       window.gtag('event', 'navigation_click', {
         destination: destination,
         location: location,
+        page_location: window.location.href,
+        page_path: window.location.pathname,
       });
     }
   };

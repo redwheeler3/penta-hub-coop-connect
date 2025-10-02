@@ -12,6 +12,8 @@ const About = () => {
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'cta_click', {
         button_name: buttonName,
+        page_location: window.location.href,
+        page_path: window.location.pathname,
       });
     }
   };
@@ -21,6 +23,8 @@ const About = () => {
       window.gtag('event', 'external_link_click', {
         link_name: linkName,
         link_url: linkUrl,
+        page_location: window.location.href,
+        page_path: window.location.pathname,
       });
     }
   };
