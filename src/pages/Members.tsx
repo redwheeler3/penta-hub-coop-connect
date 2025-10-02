@@ -14,6 +14,8 @@ const Members = () => {
       window.gtag('event', 'resource_link_click', {
         resource_category: resourceName,
         link_name: linkName,
+        page_location: window.location.href,
+        page_path: window.location.pathname,
       });
     }
   };
