@@ -15,7 +15,6 @@ const Index = () => {
         button_name: buttonName,
         button_location: location,
         page_location: window.location.href,
-        page_path: window.location.pathname,
       });
     }
   };
@@ -179,7 +178,6 @@ const Index = () => {
                     link_name: 'Designer Website',
                     link_url: 'https://www.jeffo.net',
                     page_location: window.location.href,
-                    page_path: window.location.pathname,
                   });
                 }
               }}

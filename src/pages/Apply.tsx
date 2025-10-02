@@ -45,7 +45,6 @@ const EmailSignupForm = ({
             window.gtag('event', 'form_start', {
               form_name: 'Email Signup',
               page_location: window.location.href,
-              page_path: window.location.pathname,
             });
           }
         }}
@@ -115,7 +114,6 @@ const Apply = () => {
       window.gtag('event', 'cta_click', {
         button_name: 'Complete Application Form',
         page_location: window.location.href,
-        page_path: window.location.pathname,
       });
     }
     window.open("https://applications.pentacoop.com/", "_blank");
@@ -141,7 +139,6 @@ const Apply = () => {
       window.gtag('event', 'form_submit', {
         form_name: 'Email Signup',
         page_location: window.location.href,
-        page_path: window.location.pathname,
       });
     }
     
