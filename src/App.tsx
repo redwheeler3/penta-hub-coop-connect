@@ -16,20 +16,29 @@ const queryClient = new QueryClient();
 const App = () => {
   const { pathname } = useLocation();
   const prevPathnameRef = useRef<string>('');
+  const hasTrackedInitial = useRef(false);
 
-  // Track page views with debounce to avoid tracking intermediate router states
+  // Track page views - handle initial load specially to avoid tracking "/" when hash route exists
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
-        window.gtag('event', 'page_view', {
-          page_path: pathname,
-          page_title: document.title,
-        });
-        prevPathnameRef.current = pathname;
+    // On initial mount, check if there's a hash route
+    if (!hasTrackedInitial.current) {
+      hasTrackedInitial.current = true;
+      
+      // If we have a hash (e.g., /#/members), don't track until pathname matches the hash
+      const hash = window.location.hash;
+      if (hash && hash !== '#/' && hash !== `#${pathname}`) {
+        // Skip tracking - router is still settling
+        return;
       }
-    }, 100); // Small delay to let router settle
+    }
 
-    return () => clearTimeout(timeoutId);
+    if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
+      window.gtag('event', 'page_view', {
+        page_path: pathname,
+        page_title: document.title,
+      });
+      prevPathnameRef.current = pathname;
+    }
   }, [pathname]);
 
   return (
