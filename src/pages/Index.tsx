@@ -18,7 +18,6 @@ const Index = () => {
       window.gtag('event', 'cta_click', {
         button_name: buttonName,
         button_location: location,
-        page_path: pathname,
       });
     }
   };
@@ -181,7 +180,6 @@ const Index = () => {
                   window.gtag('event', 'external_link_click', {
                     link_name: 'Designer Website',
                     link_url: 'https://www.jeffo.net',
-                    page_path: pathname,
                   });
                 }
               }}

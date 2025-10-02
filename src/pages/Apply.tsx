@@ -40,12 +40,9 @@ const EmailSignupForm = ({
         placeholder="your.email@example.com"
         required
         onFocus={(e) => {
-          // Get pathname from the component using this form
-          const pathFromUrl = window.location.hash.replace('#', '') || '/';
           if (typeof window.gtag !== 'undefined') {
             window.gtag('event', 'form_start', {
               form_name: 'Email Signup',
-              page_path: pathFromUrl,
             });
           }
         }}
@@ -118,7 +115,6 @@ const Apply = () => {
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'cta_click', {
         button_name: 'Complete Application Form',
-        page_path: pathname,
       });
     }
     window.open("https://applications.pentacoop.com/", "_blank");
@@ -140,11 +136,9 @@ const Apply = () => {
     setIsSubmitting(true);
 
     // Track form submission
-    const pathFromUrl = window.location.hash.replace('#', '') || '/';
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'form_submit', {
         form_name: 'Email Signup',
-        page_path: pathFromUrl,
       });
     }
     
