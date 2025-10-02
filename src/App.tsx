@@ -8,26 +8,43 @@ import Apply from "./pages/Apply";
 import Members from "./pages/Members";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-import { Routes, Route } from "react-router-dom"; // Keep only Routes/Route
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/apply" element={<Apply />} />
-        <Route path="/members" element={<Members />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const { pathname } = useLocation();
+  const prevPathnameRef = useRef<string>('');
+
+  // Track page views at App level to avoid double-tracking from component remounts
+  useEffect(() => {
+    if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
+      window.gtag('event', 'page_view', {
+        page_path: pathname,
+        page_title: document.title,
+      });
+      prevPathnameRef.current = pathname;
+    }
+  }, [pathname]);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/apply" element={<Apply />} />
+          <Route path="/members" element={<Members />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
