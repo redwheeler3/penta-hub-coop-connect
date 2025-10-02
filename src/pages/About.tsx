@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mountain, Waves, Shield, HandHeart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const About = () => {
+  const { pathname } = useLocation();
+  
   useEffect(() => {
     document.title = "About - Penta Housing Co-Op";
   }, []);
@@ -14,6 +16,7 @@ const About = () => {
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'cta_click', {
         button_name: buttonName,
+        page_path: pathname,
       });
     }
   };
@@ -23,6 +26,7 @@ const About = () => {
       window.gtag('event', 'external_link_click', {
         link_name: linkName,
         link_url: linkUrl,
+        page_path: pathname,
       });
     }
   };

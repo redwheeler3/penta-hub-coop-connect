@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, FileText } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const Index = () => {
+  const { pathname } = useLocation();
+  
   useEffect(() => {
     document.title = "Home - Penta Housing Co-Op";
   }, []);
@@ -16,6 +18,7 @@ const Index = () => {
       window.gtag('event', 'cta_click', {
         button_name: buttonName,
         button_location: location,
+        page_path: pathname,
       });
     }
   };
@@ -177,7 +180,8 @@ const Index = () => {
                 if (typeof window.gtag !== 'undefined') {
                   window.gtag('event', 'external_link_click', {
                     link_name: 'Designer Website',
-                    link_url: 'https://www.jeffo.net'
+                    link_url: 'https://www.jeffo.net',
+                    page_path: pathname,
                   });
                 }
               }}

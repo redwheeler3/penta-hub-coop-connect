@@ -7,7 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 // Toggle this constant to control whether applications are open or closed
@@ -39,10 +39,13 @@ const EmailSignupForm = ({
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your.email@example.com"
         required
-        onFocus={() => {
+        onFocus={(e) => {
+          // Get pathname from the component using this form
+          const pathFromUrl = window.location.hash.replace('#', '') || '/';
           if (typeof window.gtag !== 'undefined') {
             window.gtag('event', 'form_start', {
               form_name: 'Email Signup',
+              page_path: pathFromUrl,
             });
           }
         }}
@@ -101,6 +104,7 @@ const EmailSignupForm = ({
 );
 
 const Apply = () => {
+  const { pathname } = useLocation();
   const [email, setEmail] = useState("");
   const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -114,6 +118,7 @@ const Apply = () => {
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'cta_click', {
         button_name: 'Complete Application Form',
+        page_path: pathname,
       });
     }
     window.open("https://applications.pentacoop.com/", "_blank");
@@ -135,9 +140,11 @@ const Apply = () => {
     setIsSubmitting(true);
 
     // Track form submission
+    const pathFromUrl = window.location.hash.replace('#', '') || '/';
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'form_submit', {
         form_name: 'Email Signup',
+        page_path: pathFromUrl,
       });
     }
     
