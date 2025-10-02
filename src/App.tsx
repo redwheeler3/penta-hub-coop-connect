@@ -17,20 +17,19 @@ const App = () => {
   const { pathname } = useLocation();
   const prevPathnameRef = useRef<string>('');
 
-  // Track page views at App level to avoid double-tracking from component remounts
+  // Track page views with debounce to avoid tracking intermediate router states
   useEffect(() => {
-    console.log('[Analytics Debug] pathname changed to:', pathname);
-    console.log('[Analytics Debug] prevPathname was:', prevPathnameRef.current);
-    console.log('[Analytics Debug] Will track?', prevPathnameRef.current !== pathname);
-    
-    if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
-      console.log('[Analytics Debug] Tracking page_view for:', pathname);
-      window.gtag('event', 'page_view', {
-        page_path: pathname,
-        page_title: document.title,
-      });
-      prevPathnameRef.current = pathname;
-    }
+    const timeoutId = setTimeout(() => {
+      if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
+        window.gtag('event', 'page_view', {
+          page_path: pathname,
+          page_title: document.title,
+        });
+        prevPathnameRef.current = pathname;
+      }
+    }, 100); // Small delay to let router settle
+
+    return () => clearTimeout(timeoutId);
   }, [pathname]);
 
   return (
