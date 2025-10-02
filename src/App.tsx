@@ -20,10 +20,13 @@ const App = () => {
   // Track page views on route changes
   useLayoutEffect(() => {
     if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
-      window.gtag('event', 'page_view', {
-        page_path: pathname,
-        page_title: document.title,
-      });
+      // Wait for page component to set document.title
+      setTimeout(() => {
+        window.gtag('event', 'page_view', {
+          page_path: pathname,
+          page_title: document.title,
+        });
+      }, 0);
       prevPathnameRef.current = pathname;
     }
   }, [pathname]);
