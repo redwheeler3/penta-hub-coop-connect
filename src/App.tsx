@@ -19,7 +19,12 @@ const App = () => {
 
   // Track page views at App level to avoid double-tracking from component remounts
   useEffect(() => {
+    console.log('[Analytics Debug] pathname changed to:', pathname);
+    console.log('[Analytics Debug] prevPathname was:', prevPathnameRef.current);
+    console.log('[Analytics Debug] Will track?', prevPathnameRef.current !== pathname);
+    
     if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
+      console.log('[Analytics Debug] Tracking page_view for:', pathname);
       window.gtag('event', 'page_view', {
         page_path: pathname,
         page_title: document.title,
