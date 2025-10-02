@@ -18,36 +18,26 @@ const App = () => {
   const prevPathnameRef = useRef<string>('');
   const hasTrackedInitial = useRef(false);
 
-  // Track page views - useLayoutEffect runs synchronously to catch the final router state
+  // Track page views - React handles all page view tracking
   useLayoutEffect(() => {
-    console.log('=== GA Tracking Effect Fired ===');
-    console.log('Current pathname:', pathname);
-    console.log('Previous pathname:', prevPathnameRef.current);
-    console.log('Hash:', window.location.hash);
-    console.log('Has tracked initial:', hasTrackedInitial.current);
-    
     // On initial mount, check if there's a hash route
     if (!hasTrackedInitial.current) {
       hasTrackedInitial.current = true;
-      console.log('Setting hasTrackedInitial to true');
       
       // If we have a hash (e.g., /#/members), don't track until pathname matches the hash
       const hash = window.location.hash;
       if (hash && hash !== '#/' && hash !== `#${pathname}`) {
-        console.log('Skipping tracking - router is settling');
+        // Skip tracking - router is still settling
         return;
       }
     }
 
     if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
-      console.log('🔥 TRACKING PAGE VIEW:', pathname);
       window.gtag('event', 'page_view', {
         page_path: pathname,
         page_title: document.title,
       });
       prevPathnameRef.current = pathname;
-    } else {
-      console.log('Skipped tracking - same pathname or gtag not available');
     }
   }, [pathname]);
 
