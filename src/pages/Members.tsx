@@ -138,6 +138,8 @@ const Members = () => {
                       if (typeof window.gtag !== 'undefined') {
                         window.gtag('event', 'accordion_click', {
                           accordion_name: 'TELUS Email Help',
+                          page_location: window.location.href,
+                          page_path: window.location.pathname,
                         });
                       }
                     }}
