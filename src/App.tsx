@@ -16,22 +16,9 @@ const queryClient = new QueryClient();
 const App = () => {
   const { pathname } = useLocation();
   const prevPathnameRef = useRef<string>('');
-  const hasTrackedInitial = useRef(false);
 
-  // Track page views - React handles all page view tracking
+  // Track page views on route changes
   useLayoutEffect(() => {
-    // On initial mount, check if there's a hash route
-    if (!hasTrackedInitial.current) {
-      hasTrackedInitial.current = true;
-      
-      // If we have a hash (e.g., /#/members), don't track until pathname matches the hash
-      const hash = window.location.hash;
-      if (hash && hash !== '#/' && hash !== `#${pathname}`) {
-        // Skip tracking - router is still settling
-        return;
-      }
-    }
-
     if (typeof window.gtag !== 'undefined' && prevPathnameRef.current !== pathname) {
       window.gtag('event', 'page_view', {
         page_path: pathname,
