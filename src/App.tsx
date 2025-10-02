@@ -9,7 +9,7 @@ import Members from "./pages/Members";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 const queryClient = new QueryClient();
 
@@ -18,8 +18,8 @@ const App = () => {
   const prevPathnameRef = useRef<string>('');
   const hasTrackedInitial = useRef(false);
 
-  // Track page views - handle initial load specially to avoid tracking "/" when hash route exists
-  useEffect(() => {
+  // Track page views - useLayoutEffect runs synchronously to catch the final router state
+  useLayoutEffect(() => {
     // On initial mount, check if there's a hash route
     if (!hasTrackedInitial.current) {
       hasTrackedInitial.current = true;
