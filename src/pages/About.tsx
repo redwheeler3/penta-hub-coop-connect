@@ -1,16 +1,12 @@
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mountain, Waves, Shield, HandHeart } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const About = () => {
-  const { pathname } = useLocation();
-  
-  useEffect(() => {
-    document.title = "About - Penta Housing Co-Op";
-  }, []);
+  usePageTitle("About - Penta Housing Co-Op");
 
   const trackCTA = (buttonName: string) => {
     if (typeof window.gtag !== 'undefined') {

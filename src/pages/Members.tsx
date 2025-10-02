@@ -1,18 +1,13 @@
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
-import { useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const Members = () => {
-  const { pathname } = useLocation();
-  
-  useEffect(() => {
-    document.title = "Members - Penta Housing Co-Op";
-  }, []);
+  usePageTitle("Members - Penta Housing Co-Op");
 
   const trackResourceClick = (resourceName: string, linkName: string) => {
     if (typeof window.gtag !== 'undefined') {

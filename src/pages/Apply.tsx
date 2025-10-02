@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,8 +7,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 // Toggle this constant to control whether applications are open or closed
 const APPLICATIONS_OPEN = false;
@@ -101,15 +102,11 @@ const EmailSignupForm = ({
 );
 
 const Apply = () => {
-  const { pathname } = useLocation();
+  usePageTitle("Apply - Penta Housing Co-Op");
   const [email, setEmail] = useState("");
   const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-
-  useEffect(() => {
-    document.title = "Apply - Penta Housing Co-Op";
-  }, []);
 
   const handleGoogleFormClick = () => {
     if (typeof window.gtag !== 'undefined') {
