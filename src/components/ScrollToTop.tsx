@@ -10,6 +10,7 @@ const ScrollToTop = () => {
     // Track page view in Google Analytics
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'page_view', {
+        page_path: pathname,
         page_title: document.title,
       });
     }
