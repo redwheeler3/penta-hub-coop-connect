@@ -18,10 +18,7 @@ export const useScrollDepth = () => {
           depthTracked.current.add(milestone);
           
           if (typeof window.gtag !== 'undefined') {
-            window.gtag('event', 'scroll_depth', {
-              depth_percentage: milestone,
-              page_location: window.location.href,
-            });
+            window.gtag('event', `scroll_depth_${milestone}`);
           }
         }
       });

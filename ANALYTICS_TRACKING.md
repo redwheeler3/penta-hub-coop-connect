@@ -26,9 +26,6 @@ Before viewing custom data in GA4, you need to register these custom dimensions 
 - `link_name` - Name of the external link
 - `link_url` - URL of the external link
 
-### Scroll & Engagement Events
-- `depth_percentage` - Percentage of page scrolled (25, 50, 75, 100)
-- `duration_seconds` - Time spent on page (30, 60)
 
 ### Accordion Events
 - `accordion_name` - Name of the accordion expanded
@@ -41,10 +38,8 @@ Before viewing custom data in GA4, you need to register these custom dimensions 
   - `page_title`: Page title
   - `page_location`: Full URL
   - `page_referrer`: Referring URL
-- **scroll_depth**: Tracks when users scroll to 25%, 50%, 75%, and 100% of the page
-  - `depth_percentage`: Milestone reached
-- **time_on_page**: Tracks engagement time at 30 and 60 seconds
-  - `duration_seconds`: Time milestone
+- **scroll_depth_25**, **scroll_depth_50**, **scroll_depth_75**, **scroll_depth_100**: Scroll milestone events
+- **time_on_page_30s**, **time_on_page_60s**: Time engagement events
 
 ### Navigation Component (Global)
 - **navigation_click**: Tracks all navigation menu clicks
@@ -148,8 +143,7 @@ Before viewing custom data in GA4, you need to register these custom dimensions 
    - Dimensions: `resource_category`, `link_name`
 
 5. **Content Engagement Report**
-   - Events: `scroll_depth`, `time_on_page`
-   - Dimensions: `depth_percentage`, `duration_seconds`
+   - Events: `scroll_depth_25`, `scroll_depth_50`, `scroll_depth_75`, `scroll_depth_100`, `time_on_page_30s`, `time_on_page_60s`
 
 6. **External Links Report**
    - Event: `external_link_click`

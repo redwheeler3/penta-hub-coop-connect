@@ -13,10 +13,7 @@ export const useTimeOnPage = () => {
       if (timeElapsed >= 30 && !tracked30s.current) {
         tracked30s.current = true;
         if (typeof window.gtag !== 'undefined') {
-          window.gtag('event', 'time_on_page', {
-            duration_seconds: 30,
-            page_location: window.location.href,
-          });
+          window.gtag('event', 'time_on_page_30s');
         }
       }
 
@@ -24,10 +21,7 @@ export const useTimeOnPage = () => {
       if (timeElapsed >= 60 && !tracked60s.current) {
         tracked60s.current = true;
         if (typeof window.gtag !== 'undefined') {
-          window.gtag('event', 'time_on_page', {
-            duration_seconds: 60,
-            page_location: window.location.href,
-          });
+          window.gtag('event', 'time_on_page_60s');
         }
       }
     };
