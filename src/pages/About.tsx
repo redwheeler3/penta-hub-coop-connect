@@ -4,14 +4,19 @@ import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mo
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useScrollDepth } from "@/hooks/useScrollDepth";
+import { useTimeOnPage } from "@/hooks/useTimeOnPage";
 
 const About = () => {
   usePageTitle("About - Penta Housing Co-Op");
+  useScrollDepth();
+  useTimeOnPage();
 
-  const trackCTA = (buttonName: string) => {
+  const trackCTA = (buttonName: string, buttonLocation: string) => {
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'cta_click', {
         button_name: buttonName,
+        button_location: buttonLocation,
         page_location: window.location.href,
       });
     }
@@ -75,7 +80,7 @@ const About = () => {
                   </div>
                 </div>
                 
-                <Link to="/apply" onClick={() => trackCTA('Join Our Community')}>
+                <Link to="/apply" onClick={() => trackCTA('Join Our Community', 'About Penta Section')}>
                   <Button className="bg-green-600 hover:bg-green-700 hover-scale">
                     Join Our Community
                   </Button>

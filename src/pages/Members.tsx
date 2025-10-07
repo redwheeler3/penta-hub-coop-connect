@@ -5,9 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useScrollDepth } from "@/hooks/useScrollDepth";
+import { useTimeOnPage } from "@/hooks/useTimeOnPage";
 
 const Members = () => {
   usePageTitle("Members - Penta Housing Co-Op");
+  useScrollDepth();
+  useTimeOnPage();
 
   const trackResourceClick = (resourceName: string, linkName: string) => {
     if (typeof window.gtag !== 'undefined') {

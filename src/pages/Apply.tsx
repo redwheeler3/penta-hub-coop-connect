@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,8 @@ import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useScrollDepth } from "@/hooks/useScrollDepth";
+import { useTimeOnPage } from "@/hooks/useTimeOnPage";
 
 // Toggle this constant to control whether applications are open or closed
 const APPLICATIONS_OPEN = false;
@@ -21,7 +23,8 @@ const EmailSignupForm = ({
   bedroomPreferences, 
   handleBedroomChange, 
   handleEmailSubmit, 
-  isSubmitting 
+  isSubmitting,
+  setFormStarted
 }: {
   email: string;
   setEmail: (email: string) => void;
@@ -29,6 +32,7 @@ const EmailSignupForm = ({
   handleBedroomChange: (bedroom: string, checked: boolean) => void;
   handleEmailSubmit: (e: React.FormEvent) => void;
   isSubmitting: boolean;
+  setFormStarted: (started: boolean) => void;
 }) => (
   <form onSubmit={handleEmailSubmit} className="space-y-4">
     <div>
@@ -41,6 +45,7 @@ const EmailSignupForm = ({
         placeholder="your.email@example.com"
         required
         onFocus={(e) => {
+          setFormStarted(true);
           if (typeof window.gtag !== 'undefined') {
             window.gtag('event', 'form_start', {
               form_name: 'Email Signup',
@@ -104,19 +109,51 @@ const EmailSignupForm = ({
 
 const Apply = () => {
   usePageTitle("Apply - Penta Housing Co-Op");
+  useScrollDepth();
+  useTimeOnPage();
+  
   const [email, setEmail] = useState("");
   const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStarted, setFormStarted] = useState(false);
   const { toast } = useToast();
+
+  // Track form abandonment when user navigates away
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (formStarted && email && !isSubmitting) {
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'form_abandonment', {
+            form_name: 'Email Signup',
+            page_location: window.location.href,
+          });
+        }
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [formStarted, email, isSubmitting]);
 
   const handleGoogleFormClick = () => {
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'cta_click', {
         button_name: 'Complete Application Form',
+        button_location: 'Application Form',
         page_location: window.location.href,
       });
     }
     window.open("https://applications.pentacoop.com/", "_blank");
+  };
+
+  const trackInternalNavigation = (destination: string) => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'internal_navigation', {
+        destination: destination,
+        button_location: 'Application Process Section',
+        page_location: window.location.href,
+      });
+    }
   };
 
 
@@ -129,6 +166,15 @@ const Apply = () => {
         description: "Please fill in both email and bedroom preferences",
         variant: "destructive",
       });
+      
+      // Track form error
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'form_error', {
+          form_name: 'Email Signup',
+          error_type: 'Missing Information',
+          page_location: window.location.href,
+        });
+      }
       return;
     }
 
@@ -206,6 +252,15 @@ const Apply = () => {
       }, 1000);
       
     } catch (error) {
+      // Track form submission error
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'form_error', {
+          form_name: 'Email Signup',
+          error_type: 'Submission Failed',
+          page_location: window.location.href,
+        });
+      }
+      
       toast({
         title: "Error",
         description: "Failed to submit. Please try again.",
@@ -296,6 +351,7 @@ const Apply = () => {
                     handleBedroomChange={handleBedroomChange}
                     handleEmailSubmit={handleEmailSubmit}
                     isSubmitting={isSubmitting}
+                    setFormStarted={setFormStarted}
                   />
                 </div>
               </CardContent>
@@ -328,6 +384,7 @@ const Apply = () => {
                     handleBedroomChange={handleBedroomChange}
                     handleEmailSubmit={handleEmailSubmit}
                     isSubmitting={isSubmitting}
+                    setFormStarted={setFormStarted}
                   />
                 </div>
 
@@ -356,7 +413,7 @@ const Apply = () => {
                     </div>
                   </div>
                   <div className="text-center mt-8">
-                    <Link to="/about">
+                    <Link to="/about" onClick={() => trackInternalNavigation('About')}>
                       <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50">
                         Learn More About Our Community
                       </Button>
