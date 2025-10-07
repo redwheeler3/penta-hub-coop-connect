@@ -13,6 +13,8 @@ export const usePageTitle = (title: string) => {
       window.gtag('event', 'page_view', {
         page_path: pathname,
         page_title: title,
+        page_location: window.location.href,
+        page_referrer: document.referrer,
       });
     }
   }, [title, pathname]);
