@@ -4,13 +4,9 @@ import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mo
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
-import { useScrollDepth } from "@/hooks/useScrollDepth";
-import { useTimeOnPage } from "@/hooks/useTimeOnPage";
 
 const About = () => {
   usePageTitle("About - Penta Housing Co-Op");
-  useScrollDepth();
-  useTimeOnPage();
 
   const trackCTA = (buttonName: string, buttonLocation: string) => {
     if (typeof window.gtag !== 'undefined') {

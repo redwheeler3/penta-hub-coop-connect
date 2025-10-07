@@ -4,13 +4,9 @@ import { Home, Users, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
-import { useScrollDepth } from "@/hooks/useScrollDepth";
-import { useTimeOnPage } from "@/hooks/useTimeOnPage";
 
 const Index = () => {
   usePageTitle("Home - Penta Housing Co-Op");
-  useScrollDepth();
-  useTimeOnPage();
   const BASE_URL = import.meta.env.BASE_URL;
 
   const trackCTA = (buttonName: string, location: string) => {

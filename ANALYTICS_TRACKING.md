@@ -38,8 +38,6 @@ Before viewing custom data in GA4, you need to register these custom dimensions 
   - `page_title`: Page title
   - `page_location`: Full URL
   - `page_referrer`: Referring URL
-- **scroll_depth_25**, **scroll_depth_50**, **scroll_depth_75**, **scroll_depth_100**: Scroll milestone events
-- **time_on_page_30s**, **time_on_page_60s**: Time engagement events
 
 ### Navigation Component (Global)
 - **navigation_click**: Tracks all navigation menu clicks
@@ -84,18 +82,6 @@ Before viewing custom data in GA4, you need to register these custom dimensions 
   - "TELUS Email Help" accordion
 
 ## Event Implementation Details
-
-### Scroll Depth Tracking
-- Implemented via `useScrollDepth` hook
-- Tracks milestones: 25%, 50%, 75%, 100%
-- Each milestone tracked only once per page load
-- Passive event listener for performance
-
-### Time on Page Tracking
-- Implemented via `useTimeOnPage` hook
-- Tracks at 30 and 60 second intervals
-- Uses interval-based checking (every 1 second)
-- Each milestone tracked only once per page load
 
 ### Form Abandonment Tracking
 - Tracks when user:
@@ -142,10 +128,7 @@ Before viewing custom data in GA4, you need to register these custom dimensions 
    - Event: `resource_link_click`
    - Dimensions: `resource_category`, `link_name`
 
-5. **Content Engagement Report**
-   - Events: `scroll_depth_25`, `scroll_depth_50`, `scroll_depth_75`, `scroll_depth_100`, `time_on_page_30s`, `time_on_page_60s`
-
-6. **External Links Report**
+5. **External Links Report**
    - Event: `external_link_click`
    - Dimensions: `link_name`, `link_url`
 

@@ -10,8 +10,6 @@ import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
-import { useScrollDepth } from "@/hooks/useScrollDepth";
-import { useTimeOnPage } from "@/hooks/useTimeOnPage";
 
 // Toggle this constant to control whether applications are open or closed
 const APPLICATIONS_OPEN = false;
@@ -109,8 +107,6 @@ const EmailSignupForm = ({
 
 const Apply = () => {
   usePageTitle("Apply - Penta Housing Co-Op");
-  useScrollDepth();
-  useTimeOnPage();
   
   const [email, setEmail] = useState("");
   const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
