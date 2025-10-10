@@ -9,12 +9,11 @@ export const usePageTitle = (title: string) => {
     document.title = title;
 
     // Track the page view with gtag
+    // Let GA4 auto-detect location and referrer for proper UTM attribution
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'page_view', {
         page_path: pathname,
         page_title: title,
-        page_location: window.location.href,
-        page_referrer: document.referrer,
       });
     }
   }, [title, pathname]);
