@@ -1,23 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const Index = () => {
   usePageTitle("Home - Penta Housing Co-Op");
   const BASE_URL = import.meta.env.BASE_URL;
-
-  const trackCTA = (buttonName: string, location: string) => {
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'cta_click', {
-        button_name: buttonName,
-        button_location: location,
-        page_location: window.location.href,
-      });
-    }
-  };
+  const { trackCTA, trackExternalLink } = useAnalytics();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
@@ -172,15 +164,7 @@ const Index = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-gray-700 transition-colors"
-              onClick={() => {
-                if (typeof window.gtag !== 'undefined') {
-                  window.gtag('event', 'external_link_click', {
-                    link_name: 'Designer Website',
-                    link_url: 'https://www.jeffo.net',
-                    page_location: window.location.href,
-                  });
-                }
-              }}
+              onClick={() => trackExternalLink('Designer Website', 'https://www.jeffo.net')}
             >
               Jeff Oriecuia
             </a>

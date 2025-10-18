@@ -4,29 +4,11 @@ import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mo
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const About = () => {
   usePageTitle("About - Penta Housing Co-Op");
-
-  const trackCTA = (buttonName: string, buttonLocation: string) => {
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'cta_click', {
-        button_name: buttonName,
-        button_location: buttonLocation,
-        page_location: window.location.href,
-      });
-    }
-  };
-
-  const trackExternalLink = (linkName: string, linkUrl: string) => {
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'external_link_click', {
-        link_name: linkName,
-        link_url: linkUrl,
-        page_location: window.location.href,
-      });
-    }
-  };
+  const { trackCTA, trackExternalLink } = useAnalytics();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">

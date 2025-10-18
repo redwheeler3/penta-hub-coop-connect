@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ExternalLink, Mail, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 // Toggle this constant to control whether applications are open or closed
 const APPLICATIONS_OPEN = false;
@@ -22,7 +22,8 @@ const EmailSignupForm = ({
   handleBedroomChange, 
   handleEmailSubmit, 
   isSubmitting,
-  setFormStarted
+  setFormStarted,
+  trackFormStart
 }: {
   email: string;
   setEmail: (email: string) => void;
@@ -31,6 +32,7 @@ const EmailSignupForm = ({
   handleEmailSubmit: (e: React.FormEvent) => void;
   isSubmitting: boolean;
   setFormStarted: (started: boolean) => void;
+  trackFormStart: (formName: string) => void;
 }) => (
   <form onSubmit={handleEmailSubmit} className="space-y-4">
     <div>
@@ -42,14 +44,9 @@ const EmailSignupForm = ({
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your.email@example.com"
         required
-        onFocus={(e) => {
+        onFocus={() => {
           setFormStarted(true);
-          if (typeof window.gtag !== 'undefined') {
-            window.gtag('event', 'form_start', {
-              form_name: 'Email Signup',
-              page_location: window.location.href,
-            });
-          }
+          trackFormStart('Email Signup');
         }}
       />
     </div>
@@ -112,49 +109,48 @@ const Apply = () => {
   const [bedroomPreferences, setBedroomPreferences] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStarted, setFormStarted] = useState(false);
+  const isSubmittingRef = useRef(false); // Prevent double-clicks and race conditions
   const { toast } = useToast();
+  const { 
+    trackCTA, 
+    trackFormStart, 
+    trackFormSubmit, 
+    trackFormError, 
+    trackFormAbandonment,
+    trackEvent 
+  } = useAnalytics();
 
   // Track form abandonment when user navigates away
   useEffect(() => {
     const handleBeforeUnload = () => {
       if (formStarted && email && !isSubmitting) {
-        if (typeof window.gtag !== 'undefined') {
-          window.gtag('event', 'form_abandonment', {
-            form_name: 'Email Signup',
-            page_location: window.location.href,
-          });
-        }
+        trackFormAbandonment('Email Signup');
       }
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, [formStarted, email, isSubmitting]);
+  }, [formStarted, email, isSubmitting, trackFormAbandonment]);
 
   const handleGoogleFormClick = () => {
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'cta_click', {
-        button_name: 'Complete Application Form',
-        button_location: 'Application Form',
-        page_location: window.location.href,
-      });
-    }
+    trackCTA('Complete Application Form', 'Application Form');
     window.open("https://applications.pentacoop.com/", "_blank");
   };
 
   const trackInternalNavigation = (destination: string) => {
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'internal_navigation', {
-        destination: destination,
-        button_location: 'Application Process Section',
-        page_location: window.location.href,
-      });
-    }
+    trackEvent('internal_navigation', {
+      destination,
+      button_location: 'Application Process Section',
+    });
   };
-
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Prevent duplicate submissions using ref for synchronous check
+    if (isSubmittingRef.current) {
+      return;
+    }
     
     if (!email || bedroomPreferences.length === 0) {
       toast({
@@ -163,28 +159,17 @@ const Apply = () => {
         variant: "destructive",
       });
       
-      // Track form error
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('event', 'form_error', {
-          form_name: 'Email Signup',
-          error_type: 'Missing Information',
-          page_location: window.location.href,
-        });
-      }
+      trackFormError('Email Signup', 'Missing Information');
       return;
     }
 
+    // Set both state and ref to prevent duplicates
+    isSubmittingRef.current = true;
     setIsSubmitting(true);
-
-    // Track form submission
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'form_submit', {
-        form_name: 'Email Signup',
-        page_location: window.location.href,
-      });
-    }
     
     try {
+      trackFormSubmit('Email Signup');
+      
       // Create a hidden form that submits to Google Forms
       const form = document.createElement('form');
       form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfvce57NjEBBI7qx3l7eYCsjAy3j4yMqZVnjbclGOfZ9uDFIw/formResponse';
@@ -245,17 +230,11 @@ const Apply = () => {
         setEmail("");
         setBedroomPreferences([]);
         setIsSubmitting(false);
+        isSubmittingRef.current = false;
       }, 1000);
       
-    } catch (error) {
-      // Track form submission error
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('event', 'form_error', {
-          form_name: 'Email Signup',
-          error_type: 'Submission Failed',
-          page_location: window.location.href,
-        });
-      }
+    } catch (_error) {
+      trackFormError('Email Signup', 'Submission Failed');
       
       toast({
         title: "Error",
@@ -263,6 +242,7 @@ const Apply = () => {
         variant: "destructive",
       });
       setIsSubmitting(false);
+      isSubmittingRef.current = false;
     }
   };
   
@@ -348,6 +328,7 @@ const Apply = () => {
                     handleEmailSubmit={handleEmailSubmit}
                     isSubmitting={isSubmitting}
                     setFormStarted={setFormStarted}
+                    trackFormStart={trackFormStart}
                   />
                 </div>
               </CardContent>
@@ -381,6 +362,7 @@ const Apply = () => {
                     handleEmailSubmit={handleEmailSubmit}
                     isSubmitting={isSubmitting}
                     setFormStarted={setFormStarted}
+                    trackFormStart={trackFormStart}
                   />
                 </div>
 
