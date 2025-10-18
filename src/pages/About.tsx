@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { EXTERNAL_LINKS, COOP_INFO } from "@/config/constants";
 
 const About = () => {
   usePageTitle("About - Penta Housing Co-Op");
@@ -49,11 +50,11 @@ const About = () => {
                 {/* Statistics */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="bg-green-50 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-green-600">1978</div>
+                    <div className="text-2xl font-bold text-green-600">{COOP_INFO.ESTABLISHED_YEAR}</div>
                     <div className="text-sm text-gray-600">Established</div>
                   </div>
                   <div className="bg-green-50 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-green-600">22</div>
+                    <div className="text-2xl font-bold text-green-600">{COOP_INFO.NUMBER_OF_FAMILIES}</div>
                     <div className="text-sm text-gray-600">Families</div>
                   </div>
                 </div>
@@ -144,11 +145,11 @@ const About = () => {
                   <span className="text-sm">Stunning views of mountains and ocean from the neighbourhood</span>
                 </div>
                 <a 
-                  href="https://govancity.com/neighbourhoods/point-grey/" 
+                  href={EXTERNAL_LINKS.POINT_GREY_GUIDE}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hover-scale shadow-md text-sm"
-                  onClick={() => trackExternalLink('Point Grey Guide', 'https://govancity.com/neighbourhoods/point-grey/')}
+                  onClick={() => trackExternalLink('Point Grey Guide', EXTERNAL_LINKS.POINT_GREY_GUIDE)}
                 >
                   Explore Point Grey Neighbourhood Guide
                 </a>
@@ -249,20 +250,20 @@ const About = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a 
-                  href="https://www.chf.bc.ca" 
+                  href={EXTERNAL_LINKS.CHF_BC}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
-                  onClick={() => trackExternalLink('CHF BC', 'https://www.chf.bc.ca')}
+                  onClick={() => trackExternalLink('CHF BC', EXTERNAL_LINKS.CHF_BC)}
                 >
                   Co-op Housing Federation of BC
                 </a>
                 <a 
-                  href="https://chfcanada.coop" 
+                  href={EXTERNAL_LINKS.CHF_CANADA}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
-                  onClick={() => trackExternalLink('CHF Canada', 'https://chfcanada.coop')}
+                  onClick={() => trackExternalLink('CHF Canada', EXTERNAL_LINKS.CHF_CANADA)}
                 >
                   Co-op Housing Federation of Canada
                 </a>

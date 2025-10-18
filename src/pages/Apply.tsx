@@ -10,9 +10,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
 import { useAnalytics } from "@/hooks/useAnalytics";
-
-// Toggle this constant to control whether applications are open or closed
-const APPLICATIONS_OPEN = false;
+import { APP_CONFIG, FORM_FIELDS, BEDROOM_PREFERENCES, FORM_NAMES, ANALYTICS_EVENTS } from "@/config/constants";
 
 // Move EmailSignupForm outside to prevent re-creation on every render
 const EmailSignupForm = ({ 
@@ -56,34 +54,34 @@ const EmailSignupForm = ({
       <div className="space-y-2 mt-2">
         <div className="flex items-center space-x-3">
           <Checkbox
-            id="1-bedroom"
-            checked={bedroomPreferences.includes("1-bedroom")}
-            onCheckedChange={(checked) => handleBedroomChange("1-bedroom", checked as boolean)}
+            id={BEDROOM_PREFERENCES.ONE_BEDROOM.id}
+            checked={bedroomPreferences.includes(BEDROOM_PREFERENCES.ONE_BEDROOM.id)}
+            onCheckedChange={(checked) => handleBedroomChange(BEDROOM_PREFERENCES.ONE_BEDROOM.id, checked as boolean)}
           />
-          <Label htmlFor="1-bedroom" className="font-normal">
-            1 bedroom - 1 or 2 adults
+          <Label htmlFor={BEDROOM_PREFERENCES.ONE_BEDROOM.id} className="font-normal">
+            {BEDROOM_PREFERENCES.ONE_BEDROOM.label}
           </Label>
         </div>
         
         <div className="flex items-center space-x-3">
           <Checkbox
-            id="2-bedroom"
-            checked={bedroomPreferences.includes("2-bedroom")}
-            onCheckedChange={(checked) => handleBedroomChange("2-bedroom", checked as boolean)}
+            id={BEDROOM_PREFERENCES.TWO_BEDROOM.id}
+            checked={bedroomPreferences.includes(BEDROOM_PREFERENCES.TWO_BEDROOM.id)}
+            onCheckedChange={(checked) => handleBedroomChange(BEDROOM_PREFERENCES.TWO_BEDROOM.id, checked as boolean)}
           />
-          <Label htmlFor="2-bedroom" className="font-normal">
-            2 bedroom - 1 or 2 adults PLUS 1 or more children under 18
+          <Label htmlFor={BEDROOM_PREFERENCES.TWO_BEDROOM.id} className="font-normal">
+            {BEDROOM_PREFERENCES.TWO_BEDROOM.label}
           </Label>
         </div>
         
         <div className="flex items-center space-x-3">
           <Checkbox
-            id="3-bedroom"
-            checked={bedroomPreferences.includes("3-bedroom")}
-            onCheckedChange={(checked) => handleBedroomChange("3-bedroom", checked as boolean)}
+            id={BEDROOM_PREFERENCES.THREE_BEDROOM.id}
+            checked={bedroomPreferences.includes(BEDROOM_PREFERENCES.THREE_BEDROOM.id)}
+            onCheckedChange={(checked) => handleBedroomChange(BEDROOM_PREFERENCES.THREE_BEDROOM.id, checked as boolean)}
           />
-          <Label htmlFor="3-bedroom" className="font-normal">
-            3 bedroom - 1 or 2 adults PLUS 2 or more children under 18
+          <Label htmlFor={BEDROOM_PREFERENCES.THREE_BEDROOM.id} className="font-normal">
+            {BEDROOM_PREFERENCES.THREE_BEDROOM.label}
           </Label>
         </div>
       </div>
@@ -124,7 +122,7 @@ const Apply = () => {
   useEffect(() => {
     const handleBeforeUnload = () => {
       if (formStarted && email && !isSubmitting) {
-        trackFormAbandonment('Email Signup');
+        trackFormAbandonment(FORM_NAMES.EMAIL_SIGNUP);
       }
     };
 
@@ -134,11 +132,11 @@ const Apply = () => {
 
   const handleGoogleFormClick = () => {
     trackCTA('Complete Application Form', 'Application Form');
-    window.open("https://applications.pentacoop.com/", "_blank");
+    window.open(APP_CONFIG.GOOGLE_FORM_URL, "_blank");
   };
 
   const trackInternalNavigation = (destination: string) => {
-    trackEvent('internal_navigation', {
+    trackEvent(ANALYTICS_EVENTS.INTERNAL_NAVIGATION, {
       destination,
       button_location: 'Application Process Section',
     });
@@ -159,7 +157,7 @@ const Apply = () => {
         variant: "destructive",
       });
       
-      trackFormError('Email Signup', 'Missing Information');
+      trackFormError(FORM_NAMES.EMAIL_SIGNUP, 'Missing Information');
       return;
     }
 
@@ -168,39 +166,35 @@ const Apply = () => {
     setIsSubmitting(true);
     
     try {
-      trackFormSubmit('Email Signup');
+      trackFormSubmit(FORM_NAMES.EMAIL_SIGNUP);
       
       // Create a hidden form that submits to Google Forms
       const form = document.createElement('form');
-      form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfvce57NjEBBI7qx3l7eYCsjAy3j4yMqZVnjbclGOfZ9uDFIw/formResponse';
+      form.action = APP_CONFIG.GOOGLE_FORM_RESPONSE_URL;
       form.method = 'POST';
       form.target = 'hidden_iframe';
       form.style.display = 'none';
       
       // Add email field
       const emailInput = document.createElement('input');
-      emailInput.name = 'emailAddress';
+      emailInput.name = FORM_FIELDS.EMAIL;
       emailInput.value = email;
       form.appendChild(emailInput);
       
       // Add each bedroom preference as a separate entry
       bedroomPreferences.forEach(pref => {
         const bedroomInput = document.createElement('input');
-        bedroomInput.name = 'entry.2074227584';
+        bedroomInput.name = FORM_FIELDS.BEDROOM_PREFERENCE;
         
         // Map our internal values to Google Form's exact strings
-        switch (pref) {
-          case '1-bedroom':
-            bedroomInput.value = '1 bedroom (1 or 2 adults)';
-            break;
-          case '2-bedroom':
-            bedroomInput.value = '2 bedroom (1 or 2 adults PLUS 1 or more children under 18)';
-            break;
-          case '3-bedroom':
-            bedroomInput.value = '3 bedroom (1 or 2 adults PLUS 2 or more children under 18)';
-            break;
-          default:
-            bedroomInput.value = pref;
+        if (pref === BEDROOM_PREFERENCES.ONE_BEDROOM.id) {
+          bedroomInput.value = BEDROOM_PREFERENCES.ONE_BEDROOM.formValue;
+        } else if (pref === BEDROOM_PREFERENCES.TWO_BEDROOM.id) {
+          bedroomInput.value = BEDROOM_PREFERENCES.TWO_BEDROOM.formValue;
+        } else if (pref === BEDROOM_PREFERENCES.THREE_BEDROOM.id) {
+          bedroomInput.value = BEDROOM_PREFERENCES.THREE_BEDROOM.formValue;
+        } else {
+          bedroomInput.value = pref;
         }
         
         form.appendChild(bedroomInput);
@@ -234,7 +228,7 @@ const Apply = () => {
       }, 1000);
       
     } catch (_error) {
-      trackFormError('Email Signup', 'Submission Failed');
+      trackFormError(FORM_NAMES.EMAIL_SIGNUP, 'Submission Failed');
       
       toast({
         title: "Error",
@@ -266,7 +260,7 @@ const Apply = () => {
           </p>
         </div>
 
-        {APPLICATIONS_OPEN ? (
+        {APP_CONFIG.APPLICATIONS_OPEN ? (
           // Applications are open - show Google Form option
           <div className="space-y-8">
             <Card className="bg-white shadow-lg">

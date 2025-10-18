@@ -3,6 +3,8 @@
  * Provides type-safe methods for tracking various user interactions
  */
 
+import { ANALYTICS_EVENTS } from '@/config/constants';
+
 export const useAnalytics = () => {
   const trackEvent = (
     eventName: string,
@@ -17,47 +19,47 @@ export const useAnalytics = () => {
   };
 
   const trackCTA = (buttonName: string, buttonLocation: string) => {
-    trackEvent('cta_click', {
+    trackEvent(ANALYTICS_EVENTS.CTA_CLICK, {
       button_name: buttonName,
       button_location: buttonLocation,
     });
   };
 
   const trackNavigation = (destination: string, location: string) => {
-    trackEvent('navigation_click', {
+    trackEvent(ANALYTICS_EVENTS.NAVIGATION_CLICK, {
       destination,
       location,
     });
   };
 
   const trackExternalLink = (linkName: string, linkUrl: string) => {
-    trackEvent('external_link_click', {
+    trackEvent(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, {
       link_name: linkName,
       link_url: linkUrl,
     });
   };
 
   const trackFormStart = (formName: string) => {
-    trackEvent('form_start', {
+    trackEvent(ANALYTICS_EVENTS.FORM_START, {
       form_name: formName,
     });
   };
 
   const trackFormSubmit = (formName: string) => {
-    trackEvent('form_submit', {
+    trackEvent(ANALYTICS_EVENTS.FORM_SUBMIT, {
       form_name: formName,
     });
   };
 
   const trackFormError = (formName: string, errorType: string) => {
-    trackEvent('form_error', {
+    trackEvent(ANALYTICS_EVENTS.FORM_ERROR, {
       form_name: formName,
       error_type: errorType,
     });
   };
 
   const trackFormAbandonment = (formName: string) => {
-    trackEvent('form_abandonment', {
+    trackEvent(ANALYTICS_EVENTS.FORM_ABANDONMENT, {
       form_name: formName,
     });
   };
