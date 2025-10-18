@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
 import { useAnalytics } from "@/hooks/useAnalytics";
-import { EXTERNAL_LINKS } from "@/config/constants";
 
 const Index = () => {
   usePageTitle("Home - Penta Housing Co-Op");
@@ -161,11 +160,11 @@ const Index = () => {
           <p className="text-xs text-gray-500">
             Website designed by{" "}
             <a 
-              href={EXTERNAL_LINKS.DESIGNER_WEBSITE}
+              href="https://www.jeffo.net"
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-gray-700 transition-colors"
-              onClick={() => trackExternalLink('Designer Website', EXTERNAL_LINKS.DESIGNER_WEBSITE)}
+              onClick={() => trackExternalLink('Designer Website', 'https://www.jeffo.net')}
             >
               Jeff Oriecuia
             </a>
