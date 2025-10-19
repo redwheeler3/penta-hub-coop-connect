@@ -136,6 +136,12 @@ const Apply = () => {
   };
 
 
+  const getFormAnalyticsData = () => ({
+    bedroom_preferences: bedroomPreferences.join(','),
+    num_preferences: bedroomPreferences.length,
+    form_destination: 'google_forms',
+  });
+
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -159,12 +165,10 @@ const Apply = () => {
     isSubmittingRef.current = true;
     setIsSubmitting(true);
     
+    // Track form submission with analytics data
+    trackFormSubmit(FORM_CONFIG.MAILING_LIST_SIGNUP.name, getFormAnalyticsData());
+    
     try {
-      trackFormSubmit(FORM_CONFIG.MAILING_LIST_SIGNUP.name, {
-        bedroom_preferences: bedroomPreferences.join(','),
-        num_preferences: bedroomPreferences.length,
-        form_destination: 'google_forms',
-      });
       
       // Create a hidden form that submits to Google Forms
       const form = document.createElement('form');
