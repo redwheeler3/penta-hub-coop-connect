@@ -45,9 +45,13 @@ export const useAnalytics = () => {
     });
   };
 
-  const trackFormSubmit = (formName: string) => {
+  const trackFormSubmit = (
+    formName: string,
+    additionalParams: Record<string, string | number | boolean> = {}
+  ) => {
     trackEvent(ANALYTICS_EVENTS.FORM_SUBMIT, {
       form_name: formName,
+      ...additionalParams,
     });
   };
 

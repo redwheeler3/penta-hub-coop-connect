@@ -160,7 +160,11 @@ const Apply = () => {
     setIsSubmitting(true);
     
     try {
-      trackFormSubmit(FORM_CONFIG.MAILING_LIST_SIGNUP.name);
+      trackFormSubmit(FORM_CONFIG.MAILING_LIST_SIGNUP.name, {
+        bedroom_preferences: bedroomPreferences.join(','),
+        num_preferences: bedroomPreferences.length,
+        form_destination: 'google_forms',
+      });
       
       // Create a hidden form that submits to Google Forms
       const form = document.createElement('form');
