@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
-import { TrackedLink } from "@/components/TrackedLink";
-import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const Index = () => {
   usePageTitle("Home - Penta Housing Co-Op");
   const BASE_URL = import.meta.env.BASE_URL;
+  const { trackCTA, trackExternalLink } = useAnalytics();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
@@ -30,16 +31,16 @@ const Index = () => {
             that combines affordability, sustainability, and genuine connection.
           </p>
           <div className="flex justify-center space-x-4">
-            <TrackedLink to="/about" trackingName="Learn More" trackingLocation="hero">
+            <Link to="/about" onClick={() => trackCTA('Learn More', 'hero')}>
               <Button size="lg" className="bg-green-600 hover:bg-green-700">
                 Learn More
               </Button>
-            </TrackedLink>
-            <TrackedLink to="/apply" trackingName="Apply Now" trackingLocation="hero">
+            </Link>
+            <Link to="/apply" onClick={() => trackCTA('Apply Now', 'hero')}>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 bg-transparent">
                 Apply Now
               </Button>
-            </TrackedLink>
+            </Link>
           </div>
         </div>
       </section>
@@ -145,11 +146,11 @@ const Index = () => {
           <p className="text-lg text-green-100 mb-6">
             Take the first step toward cooperative living and become part of our vibrant community.
           </p>
-          <TrackedLink to="/apply" trackingName="Start Your Application" trackingLocation="bottom_cta">
+          <Link to="/apply" onClick={() => trackCTA('Start Your Application', 'bottom_cta')}>
             <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
               Start Your Application
             </Button>
-          </TrackedLink>
+          </Link>
         </div>
       </section>
 
@@ -158,13 +159,15 @@ const Index = () => {
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-xs text-gray-500">
             Website designed by{" "}
-            <TrackedExternalLink 
-              linkName="Designer Website" 
-              linkUrl="https://www.jeffo.net"
+            <a 
+              href="https://www.jeffo.net"
+              target="_blank" 
+              rel="noopener noreferrer"
               className="hover:text-gray-700 transition-colors"
+              onClick={() => trackExternalLink('Designer Website', 'https://www.jeffo.net')}
             >
               Jeff Oriecuia
-            </TrackedExternalLink>
+            </a>
           </p>
         </div>
       </footer>
