@@ -5,19 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { FileText, Users, MessageSquare, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const Members = () => {
   usePageTitle("Members - Penta Housing Co-Op");
-
-  const trackResourceClick = (resourceName: string, linkName: string) => {
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'resource_link_click', {
-        resource_category: resourceName,
-        link_name: linkName,
-        page_location: window.location.href,
-      });
-    }
-  };
+  const { trackExternalLink } = useAnalytics();
 
   const memberResources = [
     {
@@ -96,7 +88,11 @@ const Members = () => {
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2"
-                        onClick={() => trackResourceClick(resource.title, link.text)}
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          await trackExternalLink(link.text, link.url);
+                          window.open(link.url, '_blank', 'noopener,noreferrer');
+                        }}
                       >
                         {link.text}
                         {link.beta && (

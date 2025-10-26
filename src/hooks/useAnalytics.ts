@@ -23,6 +23,8 @@ export const useAnalytics = () => {
       button_name: buttonName,
       button_location: buttonLocation,
     });
+    // Small delay to ensure event is sent before navigation
+    return new Promise<void>(resolve => setTimeout(resolve, 100));
   };
 
   const trackNavigation = (destination: string, location: string) => {
@@ -37,6 +39,8 @@ export const useAnalytics = () => {
       link_name: linkName,
       link_url: linkUrl,
     });
+    // Small delay to ensure event is sent before navigation
+    return new Promise<void>(resolve => setTimeout(resolve, 100));
   };
 
   const trackFormStart = (formName: string) => {

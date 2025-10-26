@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Users, Leaf, Heart, MapPin, Train, ShoppingBag, GraduationCap, Mountain, Waves, Shield, HandHeart } from "lucide-react";
-import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { usePageTitle } from "@/hooks/usePageTitle";
-import { useAnalytics } from "@/hooks/useAnalytics";
+import { TrackedLink } from "@/components/TrackedLink";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 
 const About = () => {
   usePageTitle("About - Penta Housing Co-Op");
-  const { trackCTA, trackExternalLink } = useAnalytics();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
@@ -58,11 +57,11 @@ const About = () => {
                   </div>
                 </div>
                 
-                <Link to="/apply" onClick={() => trackCTA('Join Our Community', 'About Penta Section')}>
+                <TrackedLink to="/apply" trackingName="Join Our Community" trackingLocation="About Penta Section">
                   <Button className="bg-green-600 hover:bg-green-700 hover-scale">
                     Join Our Community
                   </Button>
-                </Link>
+                </TrackedLink>
               </div>
               
               <Card className="bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg border-green-100">
@@ -143,15 +142,13 @@ const About = () => {
                   <Mountain className="h-5 w-5 text-blue-500 mr-2" />
                   <span className="text-sm">Stunning views of mountains and ocean from the neighbourhood</span>
                 </div>
-                <a 
-                  href="https://govancity.com/neighbourhoods/point-grey/"
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                <TrackedExternalLink 
+                  linkName="Point Grey Guide"
+                  linkUrl="https://govancity.com/neighbourhoods/point-grey/"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hover-scale shadow-md text-sm"
-                  onClick={() => trackExternalLink('Point Grey Guide', 'https://govancity.com/neighbourhoods/point-grey/')}
                 >
                   Explore Point Grey Neighbourhood Guide
-                </a>
+                </TrackedExternalLink>
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Neighbourhood Highlights</h3>
@@ -248,24 +245,20 @@ const About = () => {
                 visit these valuable resources:
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a 
-                  href="https://www.chf.bc.ca"
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                <TrackedExternalLink 
+                  linkName="CHF BC"
+                  linkUrl="https://www.chf.bc.ca"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
-                  onClick={() => trackExternalLink('CHF BC', 'https://www.chf.bc.ca')}
                 >
                   Co-op Housing Federation of BC
-                </a>
-                <a 
-                  href="https://chfcanada.coop"
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                </TrackedExternalLink>
+                <TrackedExternalLink 
+                  linkName="CHF Canada"
+                  linkUrl="https://chfcanada.coop"
                   className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hover-scale shadow-md"
-                  onClick={() => trackExternalLink('CHF Canada', 'https://chfcanada.coop')}
                 >
                   Co-op Housing Federation of Canada
-                </a>
+                </TrackedExternalLink>
               </div>
             </div>
           </div>
