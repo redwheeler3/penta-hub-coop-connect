@@ -59,9 +59,9 @@ const Members = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {memberResources.map((resource, index) => (
-            <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col">
+            <Card key={index} className={`bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col ${index === 0 ? 'md:col-span-2' : 'md:col-span-1'}`}>
               <CardHeader>
                 <div className="flex items-center mb-2">
                   <resource.icon className="h-6 w-6 text-green-600 mr-3" />
