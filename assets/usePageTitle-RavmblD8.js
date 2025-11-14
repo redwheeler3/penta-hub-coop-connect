@@ -1,1 +1,0 @@
-import{n as a,r as o}from"./index-D47jz4Fx.js";const p=e=>{const{pathname:t}=a();o.useEffect(()=>{document.title=e,typeof window.gtag<"u"&&window.gtag("event","page_view",{page_path:t,page_title:e})},[e,t])};export{p as u};
