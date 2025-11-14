@@ -75,7 +75,7 @@ const Members = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-1 flex flex-col">
-                <div className="space-y-2">
+                <div className={`space-y-2 ${index === 0 ? 'md:grid md:grid-cols-2 md:gap-3 md:space-y-0' : ''}`}>
                   {resource.links.map((link, linkIndex) => (
                     <Button 
                       key={linkIndex}
