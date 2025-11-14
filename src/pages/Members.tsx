@@ -25,12 +25,13 @@ const Members = () => {
       description: "Access all co-op documents, bylaws, policies, and records",
       icon: FileText,
       links: [
-        { text: "Browse All Files", url: "https://files.pentacoop.com" },
-        { text: "Bylaws & Policies", url: "https://drive.google.com/drive/folders/1O2zb24edHeVHKLkTu5lSM0MthMccnLPF?usp=drive_link" },
-        { text: "Committee Composition", url: "https://drive.google.com/file/d/1Nv9Pnb6EaHvZAJfMew0LFQs8YBbwu_b9/view?usp=drive_link" },
-        { text: "Complaint Form", url: "https://docs.google.com/file/d/1D1cubBrqwal2Ok4t7aCH3Yiw-n25R8Mh/view?usp=drive_link" },
+        { text: "Meeting Minutes", url: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link" },
         { text: "Management Reports", url: "https://drive.google.com/drive/folders/16Bjujq-0VlEEJCqToI52RMbnJ5cuglc7?usp=drive_link" },
-        { text: "Meeting Minutes", url: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link" }
+        { text: "Bylaws & Policies", url: "https://drive.google.com/drive/folders/1O2zb24edHeVHKLkTu5lSM0MthMccnLPF?usp=drive_link" },
+        { text: "Maintenance Guidelines", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
+        { text: "Complaint Form", url: "https://docs.google.com/file/d/1D1cubBrqwal2Ok4t7aCH3Yiw-n25R8Mh/view?usp=drive_link" },
+        { text: "Committee Composition", url: "https://drive.google.com/file/d/1Nv9Pnb6EaHvZAJfMew0LFQs8YBbwu_b9/view?usp=drive_link" },
+        { text: "Browse All Files", url: "https://files.pentacoop.com" }
       ],
       external: true
     },
@@ -41,16 +42,6 @@ const Members = () => {
       links: [
         { text: "Sign Up", url: "https://discord.gg/yJRGzyCT5B", beta: true },
         { text: "Join Discussion", url: "https://discord.com/channels/1415940719276855380/1415940719813595220", beta: true }
-      ],
-      external: true
-    },
-    {
-      title: "Maintenance", 
-      description: "Read guidelines and communicate with the maintenance committee",
-      icon: Users,
-      links: [
-        { text: "Guidelines Document", url: "https://drive.google.com/file/d/1rrVl4VSP6l_aYXTpOXV2BHY3TA55Qrhk/view?usp=drive_link" },
-        { text: "Maintenance Forum", url: "https://discord.com/channels/1415940719276855380/1416571930835681384", beta: true }
       ],
       external: true
     }
@@ -108,11 +99,6 @@ const Members = () => {
                     </Button>
                   ))}
                 </div>
-                {resource.title === "Maintenance" && (
-                  <div className="mt-3 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-700">
-                    <strong>Note:</strong> You must sign up for the Community Forum first before accessing the Maintenance Forum.
-                  </div>
-                )}
               </CardContent>
             </Card>
           ))}
