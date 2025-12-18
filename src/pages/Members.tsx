@@ -22,7 +22,7 @@ const Members = () => {
   const memberResources = [
     {
       title: "File Repository",
-      description: "Access documents, bylaws, policies, and records",
+      description: "Access documents on Google Drive",
       icon: FileText,
       links: [
         { text: "Meeting Minutes", url: "https://drive.google.com/drive/folders/1kyVTEUvDEYy4XcnayWsV2KisZ44CRXgE?usp=drive_link" },
