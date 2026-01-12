@@ -135,22 +135,19 @@ const Members = () => {
                           <strong>Step 1:</strong> Go to <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">mail.google.com</a> (your TELUS email)
                         </div>
                         <div>
-                          <strong>Step 2:</strong> Click your profile picture in the top right corner
+                          <strong>Step 2:</strong> Click your profile picture or initial button in the top right corner
                         </div>
                         <div>
-                          <strong>Step 3:</strong> If you have a personal Gmail account, select it from the list
+                          <strong>Step 3:</strong> If you have a personal Gmail account listed, select it and skip to Step 6
                         </div>
                         <div>
                           <strong>Step 4:</strong> If you don't see a personal account, click "Add another account"
                         </div>
                         <div>
-                          <strong>Step 5:</strong> On the "Choose an account" screen, select "Use another account"
+                          <strong>Step 5:</strong> Sign in with an existing personal Gmail, or click "Create account" to make a new one
                         </div>
                         <div>
-                          <strong>Step 6:</strong> Click "Create account" to make a new personal Gmail account
-                        </div>
-                        <div>
-                          <strong>Step 7:</strong> Once signed in with your personal account, try accessing the File Repository links again
+                          <strong>Step 6:</strong> Once signed in with your personal account, try accessing the File Repository links again
                         </div>
                         <div className="mt-2 p-2 bg-blue-100 rounded text-xs">
                           <strong>Note:</strong> TELUS email accounts have restricted access to external shared folders. 
