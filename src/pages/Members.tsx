@@ -135,7 +135,7 @@ const Members = () => {
                           <strong>Step 1:</strong> Go to <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">mail.google.com</a> (your TELUS email)
                         </div>
                         <div>
-                          <strong>Step 2:</strong> Click your profile picture or initial button in the top right corner
+                          <strong>Step 2:</strong> Click your profile picture (or the circle with your initial) in the top right corner
                         </div>
                         <div>
                           <strong>Step 3:</strong> If you have a personal Gmail account listed, select it and skip to Step 6
