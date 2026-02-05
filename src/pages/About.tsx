@@ -38,7 +38,7 @@ const About = () => {
                 </p>
                 <p className="text-gray-600 mb-4">
                   After years of planning and community building, our cooperative welcomed its first 
-                  residents in September 1978. Today, 22 families call Penta home, continuing that legacy 
+                  residents in September 1978. Today, 20 families call Penta home, continuing that legacy 
                   of cooperation, environmental stewardship, and mutual support.
                 </p>
                 <p className="text-gray-600 mb-6">
@@ -53,7 +53,7 @@ const About = () => {
                     <div className="text-sm text-gray-600">Established</div>
                   </div>
                   <div className="bg-green-50 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-green-600">22</div>
+                    <div className="text-2xl font-bold text-green-600">20</div>
                     <div className="text-sm text-gray-600">Families</div>
                   </div>
                 </div>
